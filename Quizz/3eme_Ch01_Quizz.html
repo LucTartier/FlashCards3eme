@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3eme Ch01 Quizz</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .quiz-container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 15px;
+    }
+
+    .quiz-header h1 {
+      margin: 0 0 10px 0;
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .quiz-header p {
+      margin: 0;
+      color: #64748b;
+      font-size: 1rem;
+    }
+
+    .question-card {
+      margin-bottom: 22px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .question-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+      color: #0f172a;
+    }
+
+    .options-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .option-item {
+      margin-bottom: 8px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .option-label:hover {
+      background-color: #f1f5f9;
+    }
+
+    .option-label input {
+      margin-right: 12px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .correct {
+      background-color: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: 600;
+    }
+
+    .incorrect {
+      background-color: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+
+    .explanation {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      background-color: #eff6ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 4px;
+      color: #1e3a8a;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.99);
+    }
+
+    .result-box {
+      display: none;
+      text-align: center;
+      margin-top: 25px;
+      padding: 20px;
+      background: #dbeafe;
+      border: 2px solid var(--primary);
+      border-radius: 10px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <div class="quiz-header">
+    <h1>3eme Ch01 Quizz</h1>
+    <p>De l'Univers aux atomes (27 questions)</p>
+  </div>
+
+  <form id="quizForm">
+    <!-- Question 1 -->
+    <div class="question-card" id="q1-box">
+      <div class="question-title">1. Il y a environ 13,8 milliards d'années, l'Univers s'est subitement agrandi à partir d'une singularité. Comment s'appelle cette théorie ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q1_A">
+            <input type="radio" name="q1" value="A">
+            <span>Le fond diffus cosmologique</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q1_B">
+            <input type="radio" name="q1" value="B">
+            <span>Le Big Bang</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q1_C">
+            <input type="radio" name="q1" value="C">
+            <span>La Supernova</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question-card" id="q2-box">
+      <div class="question-title">2. Quels atomes légers se sont formés en premier, juste après le Big Bang ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_A">
+            <input type="checkbox" name="q2_A" value="A">
+            <span>L'hydrogène</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_B">
+            <input type="checkbox" name="q2_B" value="B">
+            <span>L'hélium</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_C">
+            <input type="checkbox" name="q2_C" value="C">
+            <span>L'uranium</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_D">
+            <input type="checkbox" name="q2_D" value="D">
+            <span>Le fer</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question-card" id="q3-box">
+      <div class="question-title">3. Comment se sont formés les atomes plus lourds que le fer (jusqu'à l'uranium) présents sur Terre ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q3_A">
+            <input type="radio" name="q3" value="A">
+            <span>Directement lors du Big Bang</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q3_B">
+            <input type="radio" name="q3" value="B">
+            <span>À l'intérieur du Soleil actuel</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q3_C">
+            <input type="radio" name="q3" value="C">
+            <span>Lors de l'explosion d'étoiles massives en Supernovae</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question-card" id="q4-box">
+      <div class="question-title">4. À partir de quoi et quand s'est formé notre Système solaire ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q4_A">
+            <input type="radio" name="q4" value="A">
+            <span>Il y a 13,8 milliards d'années à partir de la galaxie d'Andromède</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q4_B">
+            <input type="radio" name="q4" value="B">
+            <span>Il y a 4,6 milliards d'années à partir d'une nébuleuse de gaz et poussières issues d'une supernova</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q4_C">
+            <input type="radio" name="q4" value="C">
+            <span>Il y a 1 million d'années après une collision d'astéroïdes</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question-card" id="q5-box">
+      <div class="question-title">5. Quelles planètes du Système solaire sont correctement ordonnées de la plus proche à la plus éloignée du Soleil ? (Moyen mnémotechnique : 'Mais Vous Tirez Mal ! Je Suis Un Novice...')</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q5_A">
+            <input type="radio" name="q5" value="A">
+            <span>Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q5_B">
+            <input type="radio" name="q5" value="B">
+            <span>Vénus, Mercure, Terre, Mars, Saturne, Jupiter, Neptune, Uranus</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q5_C">
+            <input type="radio" name="q5" value="C">
+            <span>Mercure, Terre, Vénus, Mars, Jupiter, Uranus, Saturne, Neptune</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question-card" id="q6-box">
+      <div class="question-title">6. Quelle est la vitesse approximative de la lumière dans le vide ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q6_A">
+            <input type="radio" name="q6" value="A">
+            <span>300 000 m/s</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q6_B">
+            <input type="radio" name="q6" value="B">
+            <span>300 000 km/s (soit environ 3 × 10⁸ m/s)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q6_C">
+            <input type="radio" name="q6" value="C">
+            <span>3 000 000 km/h</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q6-exp"></div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question-card" id="q7-box">
+      <div class="question-title">7. Combien de temps met la lumière du Soleil pour nous parvenir sur Terre, située à une distance de 1 unité astronomique (1 u.a. = 150 millions de km) ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q7_A">
+            <input type="radio" name="q7" value="A">
+            <span>8 secondes</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q7_B">
+            <input type="radio" name="q7" value="B">
+            <span>8 minutes et 20 secondes (soit 500 secondes)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q7_C">
+            <input type="radio" name="q7" value="C">
+            <span>8 heures et 20 minutes</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q7-exp"></div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question-card" id="q8-box">
+      <div class="question-title">8. Concernant les unités de distance en astronomie, quelles affirmations sont exactes ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_A">
+            <input type="checkbox" name="q8_A" value="A">
+            <span>1 unité astronomique (1 u.a.) représente la distance moyenne entre la Terre et le Soleil (150 millions de km)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_B">
+            <input type="checkbox" name="q8_B" value="B">
+            <span>1 année-lumière (a.l.) est la distance parcourue par la lumière en un an (environ 10¹³ km)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_C">
+            <input type="checkbox" name="q8_C" value="C">
+            <span>L'unité astronomique est plus grande que l'année-lumière</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_D">
+            <input type="checkbox" name="q8_D" value="D">
+            <span>1 a.l. vaut environ 63 241 u.a.</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q8-exp"></div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question-card" id="q9-box">
+      <div class="question-title">9. Quelle est l'étoile la plus proche de notre Système solaire (Proxima du Centaure) et à quelle distance se trouve-t-elle ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q9_A">
+            <input type="radio" name="q9" value="A">
+            <span>Elle se trouve à 1 u.a. de la Terre</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q9_B">
+            <input type="radio" name="q9" value="B">
+            <span>Elle se trouve à 4,2 années-lumière (environ 4,0 × 10¹³ km)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q9_C">
+            <input type="radio" name="q9" value="C">
+            <span>Elle se trouve à 100 000 années-lumière</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q9-exp"></div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question-card" id="q10-box">
+      <div class="question-title">10. Quelles sont les caractéristiques de notre galaxie, la Voie lactée ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q10_A">
+            <input type="checkbox" name="q10_A" value="A">
+            <span>Elle comporte entre 200 et 400 milliards d'étoiles</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q10_B">
+            <input type="checkbox" name="q10_B" value="B">
+            <span>Son diamètre est d'environ 100 000 années-lumière</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q10_C">
+            <input type="checkbox" name="q10_C" value="C">
+            <span>Elle contient au minimum 100 milliards de planètes</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q10_D">
+            <input type="checkbox" name="q10_D" value="D">
+            <span>Elle a la forme d'un cercle parfait de 150 millions de km</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q10-exp"></div>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="question-card" id="q11-box">
+      <div class="question-title">11. Quelle est la première grande galaxie semblable à la nôtre et à quelle distance se trouve-t-elle ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q11_A">
+            <input type="radio" name="q11" value="A">
+            <span>Le Nuage de Magellan à 100 a.l.</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q11_B">
+            <input type="radio" name="q11" value="B">
+            <span>La galaxie d'Andromède à environ 2,5 millions d'années-lumière</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q11_C">
+            <input type="radio" name="q11" value="C">
+            <span>Le Superamas de la Vierge à 150 u.a.</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q11-exp"></div>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="question-card" id="q12-box">
+      <div class="question-title">12. Comment et quand s'est formée la Terre ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q12_A">
+            <input type="radio" name="q12" value="A">
+            <span>Il y a 4,56 milliards d'années (4 560 millions d'années) par l'accrétion d'astéroïdes en une boule de roches en fusion</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q12_B">
+            <input type="radio" name="q12" value="B">
+            <span>Il y a 13,8 milliards d'années directement après le Big Bang</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q12_C">
+            <input type="radio" name="q12" value="C">
+            <span>Il y a 65 millions d'années après la disparition des dinosaures</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q12-exp"></div>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="question-card" id="q13-box">
+      <div class="question-title">13. Si l'on ramène l'histoire de la Terre (4,56 milliards d'années) à un tour d'horloge de 12 heures, à quel moment apparaissent les premiers hominidés ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q13_A">
+            <input type="radio" name="q13" value="A">
+            <span>À 4h00 du matin</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q13_B">
+            <input type="radio" name="q13" value="B">
+            <span>À 11h49</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q13_C">
+            <input type="radio" name="q13" value="C">
+            <span>À 11h59 min 20 s (à peine 40 secondes avant midi)</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q13-exp"></div>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="question-card" id="q14-box">
+      <div class="question-title">14. Quels sont les deux constituants fondamentaux d'un atome ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q14_A">
+            <input type="radio" name="q14" value="A">
+            <span>Un noyau central et un nuage d'électrons</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q14_B">
+            <input type="radio" name="q14" value="B">
+            <span>Des molécules et des nucléons</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q14_C">
+            <input type="radio" name="q14" value="C">
+            <span>Des protons et des anions</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q14-exp"></div>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="question-card" id="q15-box">
+      <div class="question-title">15. Quelles particules composent le noyau d'un atome (les nucléons) ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q15_A">
+            <input type="checkbox" name="q15_A" value="A">
+            <span>Les protons (chargés positivement)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q15_B">
+            <input type="checkbox" name="q15_B" value="B">
+            <span>Les neutrons (électriquement neutres)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q15_C">
+            <input type="checkbox" name="q15_C" value="C">
+            <span>Les électrons (chargés négativement)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q15_D">
+            <input type="checkbox" name="q15_D" value="D">
+            <span>Les photons</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q15-exp"></div>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="question-card" id="q16-box">
+      <div class="question-title">16. Pourquoi un atome est-il électriquement neutre ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q16_A">
+            <input type="radio" name="q16" value="A">
+            <span>Parce que le noyau ne contient aucune charge électrique</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q16_B">
+            <input type="radio" name="q16" value="B">
+            <span>Parce qu'il contient autant de protons (+) dans son noyau que d'électrons (-) dans son nuage électronique</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q16_C">
+            <input type="radio" name="q16" value="C">
+            <span>Parce que les électrons sont neutres</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q16-exp"></div>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="question-card" id="q17-box">
+      <div class="question-title">17. Dans la notation symbolique d'un noyau atomique ᴬᲫX, que représentent Z et A ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q17_A">
+            <input type="radio" name="q17" value="A">
+            <span>Z représente le nombre de neutrons et A le nombre d'électrons</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q17_B">
+            <input type="radio" name="q17" value="B">
+            <span>Z représente le numéro atomique (nombre de protons) et A le nombre de nucléons (protons + neutrons)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q17_C">
+            <input type="radio" name="q17" value="C">
+            <span>Z représente la masse de l'atome en kg et A le diamètre en mètres</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q17-exp"></div>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="question-card" id="q18-box">
+      <div class="question-title">18. L'atome de lithium est représenté par ⁷₃Li. Quelle est la composition exacte de cet atome neutre ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q18_A">
+            <input type="checkbox" name="q18_A" value="A">
+            <span>3 protons dans le noyau</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q18_B">
+            <input type="checkbox" name="q18_B" value="B">
+            <span>3 électrons autour du noyau</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q18_C">
+            <input type="checkbox" name="q18_C" value="C">
+            <span>4 neutrons dans le noyau (7 - 3 = 4)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q18_D">
+            <input type="checkbox" name="q18_D" value="D">
+            <span>7 protons et 7 électrons</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q18-exp"></div>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="question-card" id="q19-box">
+      <div class="question-title">19. Que signifie l'expression 'l'atome a une structure lacunaire' ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q19_A">
+            <input type="radio" name="q19" value="A">
+            <span>L'atome manque d'électrons</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q19_B">
+            <input type="radio" name="q19" value="B">
+            <span>L'atome est constitué essentiellement de vide entre le noyau et les électrons</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q19_C">
+            <input type="radio" name="q19" value="C">
+            <span>Le noyau comporte des lacunes magnétiques</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q19-exp"></div>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="question-card" id="q20-box">
+      <div class="question-title">20. Où se situe la quasi-totalité de la masse d'un atome et pourquoi ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q20_A">
+            <input type="radio" name="q20" value="A">
+            <span>Dans les électrons, car ils sont très nombreux</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q20_B">
+            <input type="radio" name="q20" value="B">
+            <span>Dans le noyau, car la masse des électrons est négligeable devant celle des nucléons</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q20_C">
+            <input type="radio" name="q20" value="C">
+            <span>Dans le vide entre le noyau et les électrons</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q20-exp"></div>
+    </div>
+
+    <!-- Question 21 -->
+    <div class="question-card" id="q21-box">
+      <div class="question-title">21. Quels sont les ordres de grandeur respectifs du diamètre d'un atome et de celui de son noyau ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q21_A">
+            <input type="radio" name="q21" value="A">
+            <span>Atome ≈ 10⁻¹⁰ m (0,1 nm) et Noyau ≈ 10⁻¹⁵ m (1 fm)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q21_B">
+            <input type="radio" name="q21" value="B">
+            <span>Atome ≈ 1 mm et Noyau ≈ 1 µm</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q21_C">
+            <input type="radio" name="q21" value="C">
+            <span>Atome ≈ 10⁻⁵ m et Noyau ≈ 10⁻⁸ m</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q21-exp"></div>
+    </div>
+
+    <!-- Question 22 -->
+    <div class="question-card" id="q22-box">
+      <div class="question-title">22. Qu'est-ce qu'une molécule comme l'eau (H₂O) ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q22_A">
+            <input type="radio" name="q22" value="A">
+            <span>Un ensemble d'atomes liés entre eux (ex: 2 atomes d'hydrogène et 1 atome d'oxygène pour H₂O)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q22_B">
+            <input type="radio" name="q22" value="B">
+            <span>Un atome qui a perdu des électrons</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q22_C">
+            <input type="radio" name="q22" value="C">
+            <span>Une particule élémentaire du noyau</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q22-exp"></div>
+    </div>
+
+    <!-- Question 23 -->
+    <div class="question-card" id="q23-box">
+      <div class="question-title">23. Comment sont classés les atomes dans le tableau périodique des éléments ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q23_A">
+            <input type="radio" name="q23" value="A">
+            <span>Par ordre alphabétique de leur nom</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q23_B">
+            <input type="radio" name="q23" value="B">
+            <span>Du plus petit au plus grand, par numéro atomique Z croissant (nombre de protons)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q23_C">
+            <input type="radio" name="q23" value="C">
+            <span>Selon la couleur de l'élément à l'état solide</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q23-exp"></div>
+    </div>
+
+    <!-- Question 24 -->
+    <div class="question-card" id="q24-box">
+      <div class="question-title">24. Comment se déplacent les électrons autour du noyau dans le modèle moderne de l'atome ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q24_A">
+            <input type="radio" name="q24" value="A">
+            <span>Ils suivent des trajectoires circulaires parfaites comme des planètes autour du Soleil</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q24_B">
+            <input type="radio" name="q24" value="B">
+            <span>Ils se déplacent de manière désordonnée et très rapide, formant un nuage électronique de faible densité</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q24_C">
+            <input type="radio" name="q24" value="C">
+            <span>Ils sont immobiles à la surface du noyau</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q24-exp"></div>
+    </div>
+
+    <!-- Question 25 -->
+    <div class="question-card" id="q25-box">
+      <div class="question-title">25. Que se passe-t-il à grande échelle entre les galaxies lointaines ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q25_A">
+            <input type="radio" name="q25" value="A">
+            <span>Les galaxies se rapprochent toutes du Soleil</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q25_B">
+            <input type="radio" name="q25" value="B">
+            <span>Les galaxies s'éloignent les unes des autres car l'espace lui-même se dilate ( expansion de l'Univers )</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q25_C">
+            <input type="radio" name="q25" value="C">
+            <span>Les galaxies s'arrêtent de bouger</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q25-exp"></div>
+    </div>
+
+    <!-- Question 26 -->
+    <div class="question-card" id="q26-box">
+      <div class="question-title">26. Qu'est-ce que le 'fond diffus cosmologique' ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q26_A">
+            <input type="radio" name="q26" value="A">
+            <span>La première lumière émise 380 000 ans après le Big Bang, lorsque l'Univers est devenu transparent</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q26_B">
+            <input type="radio" name="q26" value="B">
+            <span>La lumière produite par l'explosion du Soleil</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q26_C">
+            <input type="radio" name="q26" value="C">
+            <span>L'ombre projetée par la Voie lactée sur la Terre</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q26-exp"></div>
+    </div>
+
+    <!-- Question 27 -->
+    <div class="question-card" id="q27-box">
+      <div class="question-title">27. Concernant le symbole des éléments et leur famille chimique, quelles affirmations sont exactes ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q27_A">
+            <input type="checkbox" name="q27_A" value="A">
+            <span>Si le symbole comporte deux lettres, la première est en MAJUSCULE et la seconde en minuscule (ex: Li, Na, Fe)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q27_B">
+            <input type="checkbox" name="q27_B" value="B">
+            <span>Les atomes d'une même colonne du tableau périodique possèdent des propriétés chimiques comparables</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q27_C">
+            <input type="checkbox" name="q27_C" value="C">
+            <span>Les atomes de lithium (Li), sodium (Na) et potassium (K) peuvent facilement perdre 1 électron pour devenir des ions positifs (Li⁺, Na⁺, K⁺)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q27_D">
+            <input type="checkbox" name="q27_D" value="D">
+            <span>Le symbole du Carbone est ca</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q27-exp"></div>
+    </div>
+
+    <button type="button" class="btn-submit" onclick="submitQuiz()">Valider mes 27 réponses</button>
+  </form>
+
+  <div class="result-box" id="resultBox"></div>
+</div>
+
+<script>
+  const answers = {
+    "q1": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : La théorie du Big Bang décrit l'expansion de l'Univers à partir d'une singularité survenue il y a environ 13,8 milliards d'années."
+    },
+    "q2": {
+        "type": "multiple",
+        "correct": [
+            "A",
+            "B"
+        ],
+        "exp": "Explication : Seuls les atomes légers comme l'hydrogène et l'hélium se sont formés très rapidement après le Big Bang."
+    },
+    "q3": {
+        "type": "single",
+        "correct": [
+            "C"
+        ],
+        "exp": "Explication : Les atomes de taille moyenne (jusqu'au fer) sont fabriqués dans les étoiles, tandis que les atomes plus lourds que le fer sont créés lors de l'explosion des supernovae."
+    },
+    "q4": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Le Soleil (étoile de 3ème génération) et son système se sont formés il y a 4,6 milliards d'années par l'effondrement d'une nébuleuse issue d'une supernova."
+    },
+    "q5": {
+        "type": "single",
+        "correct": [
+            "A"
+        ],
+        "exp": "Explication : L'ordre exact des 8 planètes est : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune."
+    },
+    "q6": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : La vitesse de la lumière est d'environ 300 000 km/s (exactement 299 792 458 m/s)."
+    },
+    "q7": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : t = d / v = (150 × 10⁶ km) / (300 000 km/s) = 500 secondes = 8 min 20 s."
+    },
+    "q8": {
+        "type": "multiple",
+        "correct": [
+            "A",
+            "B",
+            "D"
+        ],
+        "exp": "Explication : L'unité astronomique (u.a.) convient au système solaire (Terre-Soleil). L'année-lumière (a.l.) vaut environ 10¹³ km (ou 63 241 u.a.)."
+    },
+    "q9": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Proxima du Centaure (du système Alpha-Centauri) est l'étoile la plus proche du Soleil, située à 4,2 a.l."
+    },
+    "q10": {
+        "type": "multiple",
+        "correct": [
+            "A",
+            "B",
+            "C"
+        ],
+        "exp": "Explication : La Voie lactée contient 200 à 400 milliards d'étoiles, au moins 100 milliards de planètes et mesure environ 100 000 a.l. de diamètre."
+    },
+    "q11": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : La galaxie d'Andromède est la principale galaxie voisine de la Voie lactée au sein du Groupe local, située à 2,5 millions d'a.l."
+    },
+    "q12": {
+        "type": "single",
+        "correct": [
+            "A"
+        ],
+        "exp": "Explication : La Terre s'est formée il y a 4 560 millions d'années en même temps que le reste du système solaire par accrétion d'astéroïdes."
+    },
+    "q13": {
+        "type": "single",
+        "correct": [
+            "C"
+        ],
+        "exp": "Explication : Sur 12h, la vie apparaît à 4h, les dinosaures disparaissent à 11h49 et les premiers hominidés apparaissent tout à la fin, à 11h59'20\"."
+    },
+    "q14": {
+        "type": "single",
+        "correct": [
+            "A"
+        ],
+        "exp": "Explication : Tout atome est constitué d'un noyau central et d'un nuage électronique périphérique."
+    },
+    "q15": {
+        "type": "multiple",
+        "correct": [
+            "A",
+            "B"
+        ],
+        "exp": "Explication : Le noyau contient des protons (+) et des neutrons (neutres), appelés collectivement nucléons. Les électrons (-) orbitent autour du noyau."
+    },
+    "q16": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Les charges positives des protons compensent exactement les charges négatives des électrons car l'atome en possède le même nombre."
+    },
+    "q17": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Z est le numéro atomique (nombre de protons = nombre d'électrons). A est le nombre de masse ou nombre de nucléons (protons + neutrons)."
+    },
+    "q18": {
+        "type": "multiple",
+        "correct": [
+            "A",
+            "B",
+            "C"
+        ],
+        "exp": "Explication : Z=3 donc 3 protons et 3 électrons. A=7 donc 7 nucléons au total, d'où 7 - 3 = 4 neutrons."
+    },
+    "q19": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Le noyau est environ 100 000 fois plus petit que l'atome entier. La matière est donc extrêmement condensée dans le noyau et séparée par du vide."
+    },
+    "q20": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Un proton ou un neutron est environ 2 000 fois plus lourd qu'un électron. La masse de l'atome est donc pratiquement égale à celle de son noyau."
+    },
+    "q21": {
+        "type": "single",
+        "correct": [
+            "A"
+        ],
+        "exp": "Explication : Le diamètre d'un atome est de l'ordre de 10⁻¹⁰ m (0,1 nanomètre), et celui du noyau de 10⁻¹⁵ m (1 femtomètre), soit 100 000 fois plus petit."
+    },
+    "q22": {
+        "type": "single",
+        "correct": [
+            "A"
+        ],
+        "exp": "Explication : Une molécule est un assemblage électriquement neutre d'atomes liés entre eux."
+    },
+    "q23": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Les éléments sont rangés par numéro atomique Z croissant. La position dans les colonnes regroupe les éléments ayant des propriétés chimiques similaires."
+    },
+    "q24": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : Contrairement à l'ancien modèle planétaire, les électrons se déplacent très vite et de façon désordonnée autour du noyau, formant un nuage électronique."
+    },
+    "q25": {
+        "type": "single",
+        "correct": [
+            "B"
+        ],
+        "exp": "Explication : À grande échelle, l'espace se dilate et provoque l'éloignement mutuel des galaxies : c'est l'expansion de l'Univers."
+    },
+    "q26": {
+        "type": "single",
+        "correct": [
+            "A"
+        ],
+        "exp": "Explication : Le fond diffus cosmologique est le rayonnement fossile émis environ 380 000 ans après le Big Bang, première lumière à s'être propagée librement."
+    },
+    "q27": {
+        "type": "multiple",
+        "correct": [
+            "A",
+            "B",
+            "C"
+        ],
+        "exp": "Explication : La notation impose une majuscule suivie d'une minuscule (ex: Fe, Na). Les colonnes regroupent les familles chimiques aux propriétés similaires."
+    }
+};
+
+  function submitQuiz() {
+    let score = 0;
+    const total = Object.keys(answers).length;
+
+    for (let qId in answers) {
+      const qConfig = answers[qId];
+      const expDiv = document.getElementById(qId + "-exp");
+      
+      if (qConfig.type === "single") {
+        const selected = document.querySelector(`input[name="${qId}"]:checked`);
+        const labels = document.querySelectorAll(`input[name="${qId}"]`);
+
+        labels.forEach(input => {
+          input.parentElement.classList.remove('correct', 'incorrect');
+        });
+
+        if (selected) {
+          if (selected.value === qConfig.correct) {
+            score++;
+            selected.parentElement.classList.add('correct');
+          } else {
+            selected.parentElement.classList.add('incorrect');
+            labels.forEach(input => {
+              if (input.value === qConfig.correct) {
+                input.parentElement.classList.add('correct');
+              }
+            });
+          }
+        } else {
+          labels.forEach(input => {
+            if (input.value === qConfig.correct) {
+              input.parentElement.classList.add('correct');
+            }
+          });
+        }
+      } else if (qConfig.type === "multiple") {
+        const correctAnswers = qConfig.correct;
+        const options = ["A", "B", "C", "D"];
+        let userSelected = [];
+
+        options.forEach(optVal => {
+          const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+          const label = document.getElementById(`lbl_${qId}_${optVal}`);
+          
+          if (label) {
+            label.classList.remove('correct', 'incorrect');
+          }
+
+          if (input && input.checked) {
+            userSelected.push(optVal);
+          }
+        });
+
+        const isExactMatch = (
+          userSelected.length === correctAnswers.length &&
+          userSelected.every(val => correctAnswers.includes(val))
+        );
+
+        if (isExactMatch) {
+          score++;
+        }
+
+        options.forEach(optVal => {
+          const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+          const label = document.getElementById(`lbl_${qId}_${optVal}`);
+
+          if (label) {
+            const isCorrectOption = correctAnswers.includes(optVal);
+            const isChecked = input && input.checked;
+
+            if (isChecked && isCorrectOption) {
+              label.classList.add('correct');
+            } else if (isChecked && !isCorrectOption) {
+              label.classList.add('incorrect');
+            } else if (!isChecked && isCorrectOption) {
+              label.classList.add('correct');
+            }
+          }
+        });
+      }
+
+      expDiv.style.display = 'block';
+      expDiv.textContent = qConfig.exp;
+    }
+
+    const percentage = Math.round((score / total) * 100);
+    const resultBox = document.getElementById('resultBox');
+    resultBox.style.display = 'block';
+    resultBox.innerHTML = `Résultat final : ${score} / ${total} (${percentage} %)`;
+    resultBox.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
