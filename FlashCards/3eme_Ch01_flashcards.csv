@@ -1,0 +1,88 @@
+"À très grande échelle dans l'Univers, quel phénomène physique explique l'éloignement mutuel des galaxies lointaines ?","L'expansion de l'Univers, caractérisée par la dilatation de l'espace lui-même et non par un déplacement propre des galaxies dans l'espace."
+À quelle date reculée remonte la singularité initiale communément appelée le Big Bang ?,"Environ 13,8 milliards d'années."
+Par qui et dans quel esprit le terme de « Big Bang » a-t-il été initialement formulé ?,"Par l'astrophysicien britannique Fred Hoyle, qui l'avait employé de manière ironique pour se moquer de cette théorie."
+Qu'appelle-t-on le « fond diffus cosmologique » ?,"La toute première lumière émise dans l'Univers, environ 380 000 ans après le Big Bang, lorsque l'Univers est devenu suffisamment transparent pour laisser circuler le rayonnement."
+Quels types d'atomes se sont formés directement et très rapidement après le Big Bang ?,"Les atomes très légers, principalement l'hydrogène (et l'hélium)."
+Où sont synthétisés les atomes de masse moyenne allant du carbone jusqu'au fer ($Z = 26$) ?,"À l'intérieur des étoiles, par réactions de fusion nucléaire."
+Par quel mécanisme les atomes plus lourds que le fer (jusqu'à l'uranium) sont-ils créés ?,"Lors des explosions cataclysmiques d'étoiles massives en fin de vie, appelées supernovae."
+À quelle époque le Système solaire s'est-il formé ?,"Il y a environ 4,6 milliards d'années."
+Quelles sont les étapes de la naissance du Système solaire à partir d'une nébuleuse ?,"1. Effondrement d'un nuage de gaz et poussières (nébuleuse issu d'une supernova précédente).
+2. Rotation et aplatissement de la nébuleuse en un disque protoplanétaire.
+3. Formation du Soleil au centre et accrétion de la matière restante en planètes, astéroïdes et comètes."
+Quel est le moyen mnémotechnique permettant de retenir l'ordre des planètes du Système solaire ?,"« **M**ais **V**ous **T**irez **M**al ! **J**e **S**uis **U**n **N**ovice... »
+(Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune)."
+Énumérez les huit planètes du Système solaire par ordre d'éloignement croissant du Soleil.,"1. Mercure
+2. Vénus
+3. Terre
+4. Mars
+5. Jupiter
+6. Saturne
+7. Uranus
+8. Neptune"
+Quelles planètes du Système solaire constituent le groupe des planètes telluriques ?,"Mercure, Vénus, la Terre et Mars (les 4 planètes rocheuses les plus proches du Soleil)."
+Quelle est la valeur approchée de la vitesse de la lumière $v$ exprimée en km/s ?,Environ $300\ 000\text{ km/s}$ (ou plus exactement $299\ 792\ 458\text{ m/s}$).
+Comment exprime-t-on le temps de trajet $t$ d'un signal lumineux en fonction de la distance $d$ et de sa vitesse $v$ ?,$t = \cfrac{d}{v}$
+"Combien de temps la lumière du Soleil met-elle pour parvenir jusqu'à la Terre, située à $150 \times 10^6\text{ km}$ ?",$t = \cfrac{150 \times 10^6\text{ km}}{300\ 000\text{ km/s}} = 500\text{ s} = 8\text{ min } 20\text{ s}$
+Quelle est la définition physique de l'Unité Astronomique (u.a.) ?,"L'Unité Astronomique est la distance moyenne séparant la Terre du Soleil, soit environ $150 \times 10^6\text{ km}$ ($149,6\text{ Gm}$)."
+Quelle est la définition théorique d'une année-lumière (a.l.) ?,C'est la distance parcourue par la lumière dans le vide en une année entière.
+Quel est le calcul permettant de déterminer la valeur d'une année-lumière en kilomètres ?,"$1\text{ a.l.} = 300\ 000\text{ km/s} \times 365,25 \times 24 \times 3600\text{ s} = 9\ 461 \times 10^9\text{ km} \approx 10^{13}\text{ km}$"
+Pourquoi l'année-lumière n'est-elle pas une unité de distance adaptée au Système solaire ?,"Parce qu'elle est trop grande : $1\text{ a.l.}$ équivaut à environ $63\ 241\text{ u.a.}$, rendant les distances intra-système solaire excessivement petites exprimées en a.l. (ex: la Terre est à $0,0000158\text{ a.l.}$)."
+Quelle est l'étoile la plus proche du Système solaire et à quelle distance se situe-t-elle en années-lumière ?,"Proxima du Centaure (du système Alpha-Centauri), située à $4,2\text{ années-lumière}$."
+À combien d'unités astronomiques (u.a.) correspond la distance entre le Soleil et Proxima du Centaure ?,"Environ $266\ 000\text{ u.a.}$ (ou $268\ 000\text{ u.a.}$), soit $4,0 \times 10^{13}\text{ km}$."
+Pourquoi utilise-t-on une échelle logarithmique pour représenter les distances des planètes dans le système solaire externe ?,"Car les distances s'étalent sur plusieurs ordres de grandeur (de $0,38\text{ u.a.}$ pour Mercure à $30,11\text{ u.a.}$ pour Neptune), ce qui rend une représentation linéaire difficilement lisible."
+Quel est le nom de la galaxie à laquelle appartient le Système solaire ?,La Voie lactée.
+Combien d'étoiles et de planètes la Voie lactée abrite-t-elle au minimum ?,De 200 à 400 milliards d'étoiles et au minimum 100 milliards de planètes.
+"Quel est le diamètre estimé de notre galaxie, la Voie lactée ?",Environ $100\ 000\text{ années-lumière}$.
+Quel satellite scientifique de l'ESA a été déployé pour cartographier en 3D la Voie lactée ?,"Le satellite Gaia, qui a mesuré la position précise de plus de 2 milliards d'étoiles."
+Quelle est la galaxie spirale majeure la plus proche de la Voie lactée et à quelle distance se situe-t-elle ?,"La galaxie d'Andromède, située à environ 2,5 millions d'années-lumière."
+"Comment s'appelle la structure gravitationnelle regroupant la Voie lactée, la galaxie d'Andromède et leurs galaxies satellites ?",Le Groupe local.
+À quelle structure cosmique encore plus vaste le Groupe local appartient-il ?,Au Superamas de la Vierge (lui-même intégré dans le superamas Laniakea).
+Qu'appelle-t-on le « Grand attracteur » en cosmologie ?,"Une anomalie de gravité au centre du superamas Laniakea vers laquelle convergent la Voie lactée et les galaxies environnantes à environ $6,30 \times 10^5\text{ m/s}$."
+Quelle est la distance estimée de l'horizon cosmologique de l'Univers observable en tenant compte de l'expansion ?,"Environ 46,5 milliards d'années-lumière de rayon."
+Quel est l'âge de la Terre et par quel processus physique s'est-elle initialement formée ?,"Formée il y a 4 560 millions d'années (4,56 milliards d'années) par l'accrétion d'astéroïdes en une boule de roches en fusion."
+Pourquoi la forme de la Terre est-elle légèrement aplatie aux poles ?,En raison de la force centrifuge générée par sa rotation rapide sur elle-même.
+Qu'est-ce qui génère le champ magnétique protecteur de la Terre ?,Les mouvements de convection du fer en fusion (liquide) à l'intérieur du noyau terrestre.
+"Si toute l'histoire de la Terre est ramenée à un cadran d'horloge de 12 heures, à quelle heure la vie apparaît-elle ?",À 4h00 du matin.
+"Sur une horloge géologique de 12 heures, à quelle heure les dinosaures s'éteignent-ils ?",À 11h49.
+"Sur une horloge géologique de 12 heures, à quel moment exact apparaissent les premiers hominidés ?",À 11h59 min et 20 secondes (soit 40 secondes avant midi).
+Quelles sont les deux parties constitutives fondamentales d'un atome ?,Un noyau central et un nuage électronique périphérique.
+Quelles sont les deux familles de particules contenues dans le noyau d'un atome ?,Les protons et les neutrons (regroupés sous le nom de nucléons).
+Quelle est la charge électrique d'un proton ?,Positives.
+Quelle est la charge électrique d'un neutron ?,Nulle (particule neutre).
+Quelle est la charge électrique d'un électron ?,Négative.
+Pourquoi dit-on qu'un atome est électriquement neutre ?,Parce qu'il possède exactement autant d'électrons (charges négatives) que de protons (charges positives).
+Comment se déplacent les électrons au sein du nuage électronique ?,De manière désordonnée et très rapide autour du noyau (et non sur des orbites circulaires rigides).
+Que représente le numéro atomique $Z$ pour un atome donné ?,Le nombre de protons présents dans son noyau (et donc le nombre d'électrons dans l'atome neutre).
+Que représente le nombre de masse $A$ d'un atome ?,Le nombre total de nucléons (protons + neutrons) contenus dans son noyau.
+Comment calcule-t-on le nombre de neutrons $N$ d'un atome à partir des nombres $A$ et $Z$ ?,$N = A - Z$
+"Dans la notation symbolique $^{A}_{Z}X$, que désignent respectivement les lettres $A$, $Z$ et $X$ ?","- $X$ : le symbole de l'élément chimique.
+- $Z$ : le numéro atomique (nombre de protons).
+- $A$ : le nombre de masse (nombre de nucléons)."
+Donnez la composition exacte du noyau de Lithium représenté par le symbole $^{7}_{3}\text{Li}$.,Le noyau comporte 3 protons ($Z = 3$) et 4 neutrons ($A - Z = 7 - 3 = 4$).
+Combien d'électrons possède l'atome neutre de Lithium $^{7}_{3}\text{Li}$ ?,3 électrons (car $Z = 3$ protons).
+Quelle est la règle typographique pour le symbole chimique d'un élément composé de deux lettres ?,"La première lettre est toujours une **Majuscule**, et la seconde est toujours une **minuscule** (ex: $\text{Li}$, $\text{Na}$, $\text{Rb}$)."
+Comment sont regroupés les éléments chimiques figurant dans une même colonne du tableau périodique ?,Ils constituent une même famille chimique et possèdent des propriétés chimiques très comparables.
+"En perdant un électron, sous quelle forme ionique se retrouvent facilement les atomes de Lithium ($\text{Li}$), Sodium ($\text{Na}$) ou Potassium ($\text{K}$) ?","Sous forme d'ions positifs (cations) : $\text{Li}^+$, $\text{Na}^+$, $\text{K}^+$."
+Qu'est-ce qu'une molécule ?,Un assemblage électriquement neutre d'atomes liés entre eux par des liaisons chimiques.
+Quelle est la composition en atomes de la molécule d'eau $H_2O$ ?,Deux atomes d'Hydrogène ($H$) et un atome d'Oxygène ($O$).
+Quel critère régit le classement ordonné des éléments dans le tableau périodique ?,Le numéro atomique $Z$ croissant (du plus petit nombre de protons au plus grand).
+Un atome possède $Z = 6$ protons et $A = 14$ nucléons. Quel est son nombre de neutrons ?,$N = A - Z = 14 - 6 = 8\text{ neutrons}$.
+Quelle particule subatomique détermine l'identité chimique d'un élément ?,Le nombre de protons (numéro atomique $Z$).
+Qu'appelle-t-on le terme « nucléon » ?,Nom générique regroupant les deux types de particules présentes dans le noyau atomique : les protons et les neutrons.
+Quelle est la masse relative du nuage électronique par rapport au noyau d'un atome ?,Elle est négligeable : la quasi-totalité de la masse de l'atome est concentrée dans son noyau.
+Pourquoi qualifie-t-on la matière atomique de « lacunaire » ?,"Parce que le noyau est extrêmement petit par rapport à la taille globale de l'atome, le nuage électronique étant essentiellement constitué de vide."
+"Si un signal fait l'aller-retour Terre-Lune en 2,6 secondes à la vitesse de $300\ 000\text{ km/s}$, quelle est la distance aller simple Terre-Lune ?","$d = \cfrac{v \times t}{2} = \cfrac{300\ 000 \times 2,6}{2} = 390\ 000\text{ km}$"
+"La distance moyenne Mars-Soleil est de $1,52\text{ u.a.}$. À quelle distance en kilomètres cela correspond-il ?","$d = 1,52 \times 150 \times 10^6\text{ km} \approx 228 \times 10^6\text{ km}$"
+"Neptune est située à $30,11\text{ u.a.}$ du Soleil. Combien de temps faut-il à la lumière du Soleil pour atteindre Neptune ?","$t = 30,11 \times 500\text{ s} = 15\ 055\text{ s} \approx 4\text{ heures et } 11\text{ minutes}$."
+Quelle est la génération de notre Soleil en tant qu'étoile ?,"Le Soleil est une étoile de **troisième génération**, née des résidus enrichis d'étoiles précédentes mortes en supernova."
+"Quel est le superamas englobant le Superamas de la Vierge, l'Hydre-Centaure et le Paon-Indien ?",Laniakea.
+Pourquoi ne peut-on pas observer directement ce qu'il y avait avant la singularité du Big Bang ?,"Parce qu'à cette singularité (13,8 milliards d'années), les équations physiques actuelles ne sont plus valables et l'Univers était opaque au rayonnement avant 380 000 ans."
+"Dans l'histoire de la Terre (12 heures), à quel moment commence l'ère Quaternaire ?","16 secondes avant midi (à 11h59'44"")."
+À quelle position se situe l'atome de Lithium dans la classification périodique et pourquoi ?,C'est le 3ème élément car son noyau comporte $Z = 3\text{ protons}$.
+Quelle est la distance en kilomètres parcourue par la lumière en une seconde ?,$300\ 000\text{ km}$ (soit $3 \times 10^5\text{ km}$).
+Quelle galaxie voisine possède un diamètre apparent 6 fois plus grand que celui de la Lune mais reste difficilement visible à l'œil nu ?,"La galaxie d'Andromède, en raison de sa faible luminosité surfacique."
+Quelles petites galaxies satellites sont situées très près de la Voie lactée ?,Les Nuages de Magellan (Grand et Petit Nuage de Magellan).
+Complétez : L'atome est constitué d'un _____ autour duquel gravitent des _____.,noyau central ; électrons.
+Un atome d'Uranium possède $Z = 92$ et $A = 238$. Combien de protons et de neutrons contient son noyau ?,"- Protons : 92
+- Neutrons : $238 - 92 = 146$"
+Pourquoi les atomes les plus lourds que l'uranium sont-ils quasi absents à l'état naturel sur Terre ?,Car ils sont instables (radioactifs) et se désintègrent au fil du temps depuis la formation du Système solaire.
