@@ -1,12 +1,14 @@
 name: Générer index.json
 
 on:
+  workflow_dispatch:   # bouton "Run workflow" dans l'onglet Actions
   push:
-    paths:
-      - 'FlashCards/**'
 
 permissions:
   contents: write
+
+env:
+  DOSSIER: FlashCards   # <- A CHANGER d'un dépôt à l'autre (ex. Chansons) et plus bas l'extension des fichiers
 
 jobs:
   index:
@@ -18,7 +20,8 @@ jobs:
         run: |
           python3 - <<'EOF'
           import json, os
-          noms = sorted(f for f in os.listdir('FlashCards') if f.lower().endswith('.csv'))
+          dossier = os.environ['DOSSIER']
+          noms = sorted(f for f in os.listdir(dossier) if f.lower().endswith('.csv')) # <- A CHANGER en .txt
           with open('index.json', 'w', encoding='utf-8') as f:
               json.dump(noms, f, ensure_ascii=False, indent=2)
           EOF
