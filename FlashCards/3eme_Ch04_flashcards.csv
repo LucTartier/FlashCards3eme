@@ -1,0 +1,64 @@
+Quelle grandeur physique mesure l'espace occupé par la matière ?,Le volume ($V$).
+Quelle est l'unité légale (SI) du volume ?,Le mètre cube ($m^3$).
+Quelle relation de conversion existe-t-il entre le litre ($L$) et le décimètre cube ($dm^3$) ?,"$1\ L = 1\ dm^3 = 0,001\ m^3$."
+À combien de litres équivaut un volume de $1\ m^3$ ?,$1000\ L$.
+Quelle relation de conversion existe-t-il entre le millilitre ($mL$) et le centimètre cube ($cm^3$) ?,"$1\ mL = 1\ cm^3 = 0,001\ L = 10^{-6}\ m^3$."
+Quelle grandeur physique indique la quantité de matière contenue dans un corps ?,"La masse ($m$), exprimée en kilogrammes ($kg$)."
+Pourquoi la masse est-elle considérée comme la meilleure mesure d'une quantité de matière ?,Car elle est directement proportionnelle au nombre d'atomes et ne dépend ni de la température ni de la pression.
+Comment varie la masse d'un corps lors d'un changement d'état physique (ex: fusion ou vaporisation) ?,La masse se conserve parfaitement (elle ne varie pas).
+"Comment varie le volume d'un corps solide, liquide ou gazeux sous l'effet d'une élévation de température ?",Le volume augmente en raison de la dilatation thermique.
+Quels états de la matière voient leur volume fortement influencé par les variations de pression ?,Les gaz (fluides compressibles).
+Comment mesure-t-on le volume d'un solide de forme géométrique quelconque en laboratoire ?,Par déplacement d'eau dans une éprouvette graduée.
+Comment procède-t-on pour mesurer le volume d'un solide qui flotte sur l'eau par déplacement d'eau ?,On le plonge en le lestant avec un objet de volume connu placé par-dessus pour l'immerger complètement.
+Quelle est la définition de la masse volumique $\rho$ (rho) d'un matériau ?,Le rapport entre sa masse $m$ et son volume $V$ ($\rho = \cfrac{m}{V}$).
+"Quelle est la formule mathématique reliant la masse volumique $\rho$, la masse $m$ et le volume $V$ ?",$\rho = \cfrac{m}{V}$
+Pourquoi la valeur numérique de la masse volumique en $g/L$ est-elle rigoureusement égale à celle en $kg/m^3$ ?,"Car $1\ kg = 1000\ g$ et $1\ m^3 = 1000\ L$, ce qui annule les facteurs 1000 dans la conversion."
+Quelle est la masse d'un litre d'eau pure à la température de 4 °C ?,$1000\ g$ (ou $1\ kg$).
+Quelle est la masse volumique de l'eau pure à 4 °C exprimée en $g/L$ et en $kg/m^3$ ?,$\rho_{eau} = 1000\ g/L = 1000\ kg/m^3$ (ou $1\ g/mL$).
+Comment varie la masse volumique de l'eau liquide lorsque sa température passe de 4 °C à 20 °C ?,"Elle diminue légèrement, passant de $1000\ g/L$ à $998,2\ g/L$."
+Quelle est la masse d'un litre d'air à 0 °C et sous la pression atmosphérique normale ?,"$1,29\ g$."
+Quelle est la masse volumique de l'air à 0 °C exprimée en $g/L$ ?,"$\rho_{air} = 1,29\ g/L$."
+Comment varie la masse volumique de l'air lorsque la température augmente à 21 °C ?,"Elle diminue jusqu'à environ $1,2\ g/L$."
+Qu'est-ce que la densité $d$ d'un solide ou d'un liquide ?,Le rapport sans unité de sa masse volumique sur celle de l'eau : $d = \cfrac{\rho_{matière}}{\rho_{eau}}$.
+Qu'est-ce que la densité $d$ d'un gaz ?,Le rapport sans unité de sa masse volumique sur celle de l'air : $d = \cfrac{\rho_{gaz}}{\rho_{air}}$.
+Quelle est l'unité de la densité $d$ ?,La densité n'a pas d'unité (grandeur adimensionnelle).
+"L'aluminium a une densité $d = 2,70$. Quelle est sa masse volumique en $g/L$ ?","$\rho_{Aluminium} = 2,70 \times 1000 = 2700\ g/L$."
+"Que signifie physiquement une densité de 2,70 pour l'aluminium ?","À volume égal, l'aluminium est 2,70 fois plus lourd que l'eau."
+"L'hélium a une densité de $0,139$ par rapport à l'air. Combien de fois est-il plus léger que l'air à volume égal ?","Environ $7,19$ fois plus léger ($\cfrac{1}{0,139} \approx 7,19$)."
+"Calculer la masse volumique de l'hélium sachant que $d = 0,139$ et $\rho_{air} = 1,29\ g/L$.","$\rho_{Hélium} = 0,139 \times 1,29 \approx 0,179\ g/L$."
+Pourquoi la glace solide flotte-t-elle à la surface de l'eau liquide ?,Car sa masse volumique ($\rho_{glace} \approx 920\ g/L$) est inférieure à celle de l'eau liquide ($\rho_{eau} = 1000\ g/L$).
+Pourquoi la fonte de la banquise (glace flottante) n'entraîne-t-elle pas de hausse du niveau des océans ?,Car le volume de glace immergé déplace exactement la même masse d'eau liquide une fois fondue (principe d'Archimède).
+Quels phénomènes principaux sont responsables de l'élévation globale du niveau de la mer ?,La dilatation thermique de l'eau des océans et la fonte des glaces situées sur les continents (glaciers et inlandsis).
+Pourquoi l'huile et l'eau ne se mélangent-elles pas et pourquoi l'huile surnage-t-elle au-dessus de l'eau ?,"Elles ne sont pas miscibles, et l'huile a une masse volumique inférieure à celle de l'eau."
+Comment peut-on déterminer si un objet métallique est en métal pur ou constitué d'un alliage ?,En mesurant expérimentalement sa masse volumique et en la comparant aux valeurs des corps purs.
+Quel est l'alliage métallique composé principalement de cuivre et de zinc ?,Le laiton.
+Qu'est-ce que la solubilité $s$ d'un soluté dans un solvant ?,La masse maximale de soluté que l'on peut dissoudre dans un litre de solvant à une température donnée.
+Quelle est la formule mathématique de la solubilité $s$ ?,$s(g/L) = \cfrac{m_{max\ soluté}(g)}{V_{solution\ saturée}(L)}$
+Comment qualifie-t-on une solution dans laquelle le solvant a dissous la quantité maximale possible de soluté ?,Une solution saturée.
+Qu'observe-t-on si l'on ajoute du soluté dans une solution déjà saturée ?,Le soluté en excès ne se dissout plus et se dépose au fond du récipient (mélange hétérogène).
+Quelle est la définition de la concentration massique (ou titre massique) $t$ d'une solution ?,La masse $m$ de soluté dissous rapportée au volume $V$ de la solution obtenue ($t = \cfrac{m}{V}$).
+Quelle est la différence fondamentale entre la concentration massique $t$ et la solubilité $s$ ?,La concentration massique varie de 0 jusqu'à la limite maximale représentée par la solubilité $s$.
+Quelle est la solubilité du chlorure de sodium ($NaCl$) dans l'eau à 20 °C ?,$360\ g/L$.
+Quelle est la solubilité du saccharose (sucre de table) dans l'eau à 20 °C ?,$2000\ g/L$.
+Quels sont les pourcentages massiques approximatifs de sucre et d'eau dans un sirop saturé en saccharose à 20 °C ?,"Environ $67,5\ \%$ de sucre et $32,5\ \%$ d'eau (solution devenant très visqueuse)."
+Comment varie généralement la solubilité d'un solide dans l'eau lorsque la température augmente ?,La solubilité du solide augmente avec la température.
+Comment varie la solubilité d'un gaz dans l'eau lorsque la température augmente ?,La solubilité du gaz diminue lorsque la température augmente.
+Pourquoi les eaux froides des océans polaires sont-elles particulièrement riches en faune marine ?,"Car le dioxygène gazeux y est plus soluble à basse température, offrant une eau très oxygénée."
+Comment varie la solubilité d'un gaz dans un liquide en fonction de la pression ?,La solubilité d'un gaz augmente lorsque la pression augmente.
+Que se passe-t-il lors de l'ouverture d'une bouteille de soda sous pression ?,"La baisse de pression fait chuter la solubilité du $CO_2$, provoquant le dégazage de bulles de dioxyde de carbone."
+Que signifie le principe chimique « ce qui se ressemble s'assemble » en matière de solubilité ?,"Les substances hydrophobes se dissolvent dans les solvants lipophiles (apolaires), et les substances hydrophiles dans les solvants polaires."
+Pourquoi est-il préférable d'utiliser de la cendre plutôt que de l'eau savonneuse ou de la soude pour nettoyer du goudron ?,Car le goudron est une substance lipophile/hydrophobe qui ne se dissout pas dans l'eau.
+"Dans un marais salant, à quel moment le sel commence-t-il à cristalliser ?",Lorsque l'eau s'évapore et que la concentration en sel dépasse la solubilité du chlorure de sodium ($360\ g/L$).
+Quelle température correspond à la densité maximale de l'eau liquide ($1000\ g/L$) ?,4 °C.
+Quelle est la température de l'eau au fond d'un lac gelé en hiver et pourquoi ?,"4 °C, car c'est l'eau la plus dense qui coule au fond."
+Quelle est la masse volumique approximative de la glace à -20 °C ?,"Environ $919,6\ g/L$."
+Un morceau de fer a une masse $m = 158\ g$ et un volume $V = 20\ cm^3$. Quelle est sa masse volumique en $g/cm^3$ ?,"$\rho = \cfrac{158}{20} = 7,9\ g/cm^3$ (soit $7900\ g/L$)."
+Un échantillon de liquide incolore a une masse de $80\ g$ pour un volume de $100\ mL$. Quelle est sa densité par rapport à l'eau ?,"$\rho = \cfrac{80}{100} = 0,8\ g/mL \Rightarrow d = \cfrac{0,8}{1,0} = 0,8$."
+"Le liquide de densité $d = 0,8$ va-t-il flotter ou couler lorsqu'on le verse dans de l'eau pure ?",Il va flotter car sa densité est inférieure à celle de l'eau ($d < 1$).
+Quelle masse maximale de sel ($NaCl$) peut-on dissoudre dans $500\ mL$ d'eau à 20 °C ($s = 360\ g/L$) ?,"$m_{max} = 360 \times 0,5 = 180\ g$."
+"Si l'on ajoute $200\ g$ de sel dans $500\ mL$ d'eau à 20 °C, quelle masse de sel restera non dissoute au fond ?",$200\ g - 180\ g = 20\ g$ de sel non dissous.
+Quel terme désigne le composé qui est dissous lors de la préparation d'une solution ?,Le soluté.
+Quel terme désigne le liquide dans lequel on dissout une substance ?,Le solvant.
+Comment appelle-t-on le mélange homogène obtenu par dissolution d'un soluté dans un solvant ?,Une solution.
+Pourquoi un ballon rempli d'hélium s'élève-t-il dans l'air ?,Car l'hélium a une masse volumique très inférieure à celle de l'air environnant ($d < 1$).
+Que se passe-t-il pour le volume de l'eau lorsqu'elle gèle (passe de l'état liquide à solide) ?,"Le volume augmente (l'eau se dilate en gelant), ce qui explique la baisse de sa masse volumique."
