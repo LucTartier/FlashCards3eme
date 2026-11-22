@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3eme Ch04 Quizz</title>
+<style>
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --success: #16a34a;
+  --error: #dc2626;
+  --border: #e2e8f0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px;
+  margin: 0;
+}
+
+.quiz-container {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 15px;
+}
+
+.quiz-header h1 {
+  margin: 0 0 10px 0;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+
+.quiz-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.question-card {
+  margin-bottom: 22px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.question-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
+
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.option-item {
+  margin-bottom: 8px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.option-label:hover {
+  background-color: #f1f5f9;
+}
+
+.option-label input {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.correct {
+  background-color: #dcfce7 !important;
+  border-color: var(--success) !important;
+  color: #14532d;
+  font-weight: 600;
+}
+
+.incorrect {
+  background-color: #fee2e2 !important;
+  border-color: var(--error) !important;
+  color: #7f1d1d;
+}
+
+.explanation {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  background-color: #eff6ff;
+  border-left: 4px solid var(--primary);
+  border-radius: 4px;
+  color: #1e3a8a;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-submit:active {
+  transform: scale(0.99);
+}
+
+.result-box {
+  display: none;
+  text-align: center;
+  margin-top: 25px;
+  padding: 20px;
+  background: #dbeafe;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1e40af;
+}
+
+</style>
+</head>
+<body>
+<div class="quiz-container">
+  <div class="quiz-header">
+    <h1>3eme Ch04 Quizz</h1>
+    <p>La masse volumique et la solubilité (25 questions)</p>
+  </div>
+  <form id="quizForm">
+    <!-- Question q1 -->
+    <div class="question-card" id="q1-box">
+      <div class="question-title">1. Quelle grandeur physique mesure l'espace occupé par la matière et quelle est son unité légale dans le Système International (SI) ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q1_A">
+            <input type="radio" name="q1" value="A">
+            <span>La masse, mesurée en kilogramme (kg)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q1_B">
+            <input type="radio" name="q1" value="B">
+            <span>Le volume (V), mesuré en mètre cube (m³)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q1_C">
+            <input type="radio" name="q1" value="C">
+            <span>La densité, mesurée en litre (L)</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q1-exp"></div>
+    </div>
+    <!-- Question q2 -->
+    <div class="question-card" id="q2-box">
+      <div class="question-title">2. Quelles équivalences de conversion de volume sont rigoureusement exactes ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_A">
+            <input type="checkbox" name="q2_A" value="A">
+            <span>1 L = 1 dm³ = 0,001 m³</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_B">
+            <input type="checkbox" name="q2_B" value="B">
+            <span>1 mL = 1 cm³ = 10⁻⁶ m³</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_C">
+            <input type="checkbox" name="q2_C" value="C">
+            <span>1 m³ = 1 000 L</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q2_D">
+            <input type="checkbox" name="q2_D" value="D">
+            <span>1 L = 100 cm³</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q2-exp"></div>
+    </div>
+    <!-- Question q3 -->
+    <div class="question-card" id="q3-box">
+      <div class="question-title">3. Comment mesure-t-on le volume d'un solide de forme géométrique quelconque au laboratoire ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q3_A">
+            <input type="radio" name="q3" value="A">
+            <span>En le pesant directement sur une balance électronique</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q3_B">
+            <input type="radio" name="q3" value="B">
+            <span>Par déplacement d'eau dans une éprouvette graduée (V_solide = V_final - V_initial)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q3_C">
+            <input type="radio" name="q3" value="C">
+            <span>En mesurant uniquement sa longueur avec une règle</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q3-exp"></div>
+    </div>
+    <!-- Question q4 -->
+    <div class="question-card" id="q4-box">
+      <div class="question-title">4. Que mesure la masse (m) d'un objet et quelles sont ses caractéristiques fondamentales ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q4_A">
+            <input type="radio" name="q4" value="A">
+            <span>Elle mesure la quantité de matière (exprimée en kg), proportionnelle au nombre d'atomes, et ne dépend ni de la température ni de la pression</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q4_B">
+            <input type="radio" name="q4" value="B">
+            <span>Elle mesure la taille de l'objet en mètres et change lorsque la température augmente</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q4_C">
+            <input type="radio" name="q4" value="C">
+            <span>Elle est nulle dans le vide</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q4-exp"></div>
+    </div>
+    <!-- Question q5 -->
+    <div class="question-card" id="q5-box">
+      <div class="question-title">5. Lors du changement d'état physique de l'eau (par exemple la vaporisation de 1 kg d'eau liquide en vapeur d'eau), que se passe-t-il ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q5_A">
+            <input type="radio" name="q5" value="A">
+            <span>La masse augmente et le volume diminue</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q5_B">
+            <input type="radio" name="q5" value="B">
+            <span>La masse se conserve (1 kg reste 1 kg) mais le volume varie considérablement</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q5_C">
+            <input type="radio" name="q5" value="C">
+            <span>La masse et le volume restent tous deux strictement identiques</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q5-exp"></div>
+    </div>
+    <!-- Question q6 -->
+    <div class="question-card" id="q6-box">
+      <div class="question-title">6. Quelle est la formule mathématique de la masse volumique ρ (rho) ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q6_A">
+            <input type="radio" name="q6" value="A">
+            <span>ρ = m × V</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q6_B">
+            <input type="radio" name="q6" value="B">
+            <span>ρ = m / V</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q6_C">
+            <input type="radio" name="q6" value="C">
+            <span>ρ = V / m</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q6-exp"></div>
+    </div>
+    <!-- Question q7 -->
+    <div class="question-card" id="q7-box">
+      <div class="question-title">7. Pourquoi l'unité g/L est-elle strictement équivalente à l'unité kg/m³ pour la masse volumique ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q7_A">
+            <input type="radio" name="q7" value="A">
+            <span>Parce que 1 kg = 1000 g et 1 m³ = 1000 L, ainsi (1000 g) / (1000 L) = 1 g/L</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q7_B">
+            <input type="radio" name="q7" value="B">
+            <span>C'est une coïncidence sans explication mathématique</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q7_C">
+            <input type="radio" name="q7" value="C">
+            <span>Parce que le litre et le gramme sont la même unité</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q7-exp"></div>
+    </div>
+    <!-- Question q8 -->
+    <div class="question-card" id="q8-box">
+      <div class="question-title">8. Quelle est la masse volumique de référence de l'eau pure à 4 °C ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_A">
+            <input type="radio" name="q8" value="A">
+            <span>ρ_eau = 1 g/L</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_B">
+            <input type="radio" name="q8" value="B">
+            <span>ρ_eau = 1000 g/L (soit 1 kg/L ou 1000 kg/m³)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_C">
+            <input type="radio" name="q8" value="C">
+            <span>ρ_eau = 920 g/L</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q8-exp"></div>
+    </div>
+    <!-- Question q9 -->
+    <div class="question-card" id="q9-box">
+      <div class="question-title">9. Quelle est la masse d'un litre d'air dans les conditions normales (0 °C, 1 atm) ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q9_A">
+            <input type="radio" name="q9" value="A">
+            <span>0 g (l'air est sans masse)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q9_B">
+            <input type="radio" name="q9" value="B">
+            <span>1,29 g (soit ρ_air = 1,29 g/L)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q9_C">
+            <input type="radio" name="q9" value="C">
+            <span>100 g</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q9-exp"></div>
+    </div>
+    <!-- Question q10 -->
+    <div class="question-card" id="q10-box">
+      <div class="question-title">10. Comment calcule-t-on la densité (d) d'un solide ou d'un liquide ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q10_A">
+            <input type="radio" name="q10" value="A">
+            <span>d = ρ_matière / ρ_eau (sans unité)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q10_B">
+            <input type="radio" name="q10" value="B">
+            <span>d = ρ_matière / ρ_air</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q10_C">
+            <input type="radio" name="q10" value="C">
+            <span>d = m × ρ_eau</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q10-exp"></div>
+    </div>
+    <!-- Question q11 -->
+    <div class="question-card" id="q11-box">
+      <div class="question-title">11. Comment se calcule la densité (d) d'un gaz ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q11_A">
+            <input type="radio" name="q11" value="A">
+            <span>d_gaz = ρ_gaz / ρ_eau</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q11_B">
+            <input type="radio" name="q11" value="B">
+            <span>d_gaz = ρ_gaz / ρ_air (sans unité)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q11_C">
+            <input type="radio" name="q11" value="C">
+            <span>d_gaz = V_gaz / m_gaz</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q11-exp"></div>
+    </div>
+    <!-- Question q12 -->
+    <div class="question-card" id="q12-box">
+      <div class="question-title">12. Sachant que l'aluminium a une densité d = 2,70, quelle est la masse d'un bloc d'aluminium de volume V = 2 L ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q12_A">
+            <input type="radio" name="q12" value="A">
+            <span>2,70 kg</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q12_B">
+            <input type="radio" name="q12" value="B">
+            <span>5,40 kg (5 400 g)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q12_C">
+            <input type="radio" name="q12" value="C">
+            <span>1,35 kg</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q12-exp"></div>
+    </div>
+    <!-- Question q13 -->
+    <div class="question-card" id="q13-box">
+      <div class="question-title">13. L'hélium ayant une densité d = 0,139 par rapport à l'air, que peut-on en déduire ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q13_A">
+            <input type="radio" name="q13" value="A">
+            <span>L'hélium est environ 7,19 fois plus léger que l'air à volume égal et un ballon gonflé à l'hélium s'élève</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q13_B">
+            <input type="radio" name="q13" value="B">
+            <span>L'hélium est plus lourd que l'air et coule au sol</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q13_C">
+            <input type="radio" name="q13" value="C">
+            <span>La masse volumique de l'hélium est de 1000 g/L</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q13-exp"></div>
+    </div>
+    <!-- Question q14 -->
+    <div class="question-card" id="q14-box">
+      <div class="question-title">14. Quelles sont les propriétés particulières de la glace d'eau par rapport à l'eau liquide ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q14_A">
+            <input type="checkbox" name="q14_A" value="A">
+            <span>La masse volumique de la glace (≈ 920 g/L) est inférieure à celle de l'eau liquide (1000 g/L)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q14_B">
+            <input type="checkbox" name="q14_B" value="B">
+            <span>L'eau augmente de volume lorsqu'elle gèle</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q14_C">
+            <input type="checkbox" name="q14_C" value="C">
+            <span>La glace flotte sur l'eau liquide</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q14_D">
+            <input type="checkbox" name="q14_D" value="D">
+            <span>La glace est plus dense que l'eau liquide</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q14-exp"></div>
+    </div>
+    <!-- Question q15 -->
+    <div class="question-card" id="q15-box">
+      <div class="question-title">15. Pourquoi la fonte complète de la banquise (glace flottante) ne fait-elle pas monter le niveau des océans ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q15_A">
+            <input type="radio" name="q15" value="A">
+            <span>Car la glace s'évapore instantanément</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q15_B">
+            <input type="radio" name="q15" value="B">
+            <span>En vertu du principe d'Archimède, la glace flottante déplace exactement un volume d'eau liquide équivalent à sa masse</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q15_C">
+            <input type="radio" name="q15" value="C">
+            <span>Parce que l'eau de la banquise disparaît dans les fonds marins</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q15-exp"></div>
+    </div>
+    <!-- Question q16 -->
+    <div class="question-card" id="q16-box">
+      <div class="question-title">16. Quels facteurs sont réellement responsables de la montée globale du niveau des mers ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q16_A">
+            <input type="checkbox" name="q16_A" value="A">
+            <span>La fonte des glaces situées sur les continents (glaciers terrestres, Groenland, Antarctique)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q16_B">
+            <input type="checkbox" name="q16_B" value="B">
+            <span>La dilatation thermique de l'eau des océans sous l'effet du réchauffement climatique</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q16_C">
+            <input type="checkbox" name="q16_C" value="C">
+            <span>La fonte de la banquise arctique flottante</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q16_D">
+            <input type="checkbox" name="q16_D" value="D">
+            <span>La rotation de la Terre</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q16-exp"></div>
+    </div>
+    <!-- Question q17 -->
+    <div class="question-card" id="q17-box">
+      <div class="question-title">17. Pourquoi l'huile ne se mélange-t-elle pas à l'eau et reste-t-elle au-dessus ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q17_A">
+            <input type="radio" name="q17" value="A">
+            <span>L'eau et l'huile sont non miscibles et la densité de l'huile est inférieure à celle de l'eau (d_huile < 1)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q17_B">
+            <input type="radio" name="q17" value="B">
+            <span>L'huile est plus dense que l'eau</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q17_C">
+            <input type="radio" name="q17" value="C">
+            <span>L'huile réagit chimiquement avec l'eau en formant du gaz</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q17-exp"></div>
+    </div>
+    <!-- Question q18 -->
+    <div class="question-card" id="q18-box">
+      <div class="question-title">18. Quelle est la définition exacte de la solubilité (s) d'un soluté dans un solvant ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q18_A">
+            <input type="radio" name="q18" value="A">
+            <span>La masse minimale de solvant nécessaire pour dissoudre un atome</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q18_B">
+            <input type="radio" name="q18" value="B">
+            <span>La masse maximale de soluté que l'on peut dissoudre par litre de solution à une température donnée (s = m_max / V)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q18_C">
+            <input type="radio" name="q18" value="C">
+            <span>Le temps nécessaire pour mélanger une solution</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q18-exp"></div>
+    </div>
+    <!-- Question q19 -->
+    <div class="question-card" id="q19-box">
+      <div class="question-title">19. Qu'observe-t-on lorsqu'une solution devient « saturée » en soluté ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q19_A">
+            <input type="radio" name="q19" value="A">
+            <span>Tout le soluté s'évapore</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q19_B">
+            <input type="radio" name="q19" value="B">
+            <span>Le soluté supplémentaire en excès ne peut plus se dissoudre et forme un dépôt solide au fond du récipient</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q19_C">
+            <input type="radio" name="q19" value="C">
+            <span>La température du liquide monte à 100 °C</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q19-exp"></div>
+    </div>
+    <!-- Question q20 -->
+    <div class="question-card" id="q20-box">
+      <div class="question-title">20. Quelle est la différence entre la concentration massique t (titre) et la solubilité s ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q20_A">
+            <input type="radio" name="q20" value="A">
+            <span>Il n'y a aucune différence</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q20_B">
+            <input type="radio" name="q20" value="B">
+            <span>t mesure la masse de soluté actuellement dissoute par litre de solution (t = m/V), tandis que s est la valeur maximale que peut atteindre t à saturation</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q20_C">
+            <input type="radio" name="q20" value="C">
+            <span>s est mesurée en kg et t en mètres</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q20-exp"></div>
+    </div>
+    <!-- Question q21 -->
+    <div class="question-card" id="q21-box">
+      <div class="question-title">21. Quelles sont les valeurs caractéristiques de solubilité dans l'eau à 20 °C du sel (NaCl) et du sucre (saccharose) ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q21_A">
+            <input type="checkbox" name="q21_A" value="A">
+            <span>Solubilité du chlorure de sodium (sel) = 360 g/L</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q21_B">
+            <input type="checkbox" name="q21_B" value="B">
+            <span>Solubilité du saccharose (sucre) = 2 000 g/L</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q21_C">
+            <input type="checkbox" name="q21_C" value="C">
+            <span>Solubilité du sel = 2 000 g/L</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q21_D">
+            <input type="checkbox" name="q21_D" value="D">
+            <span>Solubilité du sucre = 5 g/L</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q21-exp"></div>
+    </div>
+    <!-- Question q22 -->
+    <div class="question-card" id="q22-box">
+      <div class="question-title">22. Dans un sirop d'eau saturé en sucre à 20 °C (s = 2000 g/L), quelle est la proportion massique de sucre ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q22_A">
+            <input type="radio" name="q22" value="A">
+            <span>10 % de sucre et 90 % d'eau</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q22_B">
+            <input type="radio" name="q22" value="B">
+            <span>67,5 % de sucre et 32,5 % d'eau (il y a plus de sucre que d'eau !)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q22_C">
+            <input type="radio" name="q22" value="C">
+            <span>50 % de sucre et 50 % d'eau</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q22-exp"></div>
+    </div>
+    <!-- Question q23 -->
+    <div class="question-card" id="q23-box">
+      <div class="question-title">23. Comment la température influence-t-elle la solubilité des solides et des gaz dans l'eau ? (Plusieurs réponses possibles)</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q23_A">
+            <input type="checkbox" name="q23_A" value="A">
+            <span>La solubilité des solides augmente généralement avec la température</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q23_B">
+            <input type="checkbox" name="q23_B" value="B">
+            <span>La solubilité des gaz diminue lorsque la température augmente</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q23_C">
+            <input type="checkbox" name="q23_C" value="C">
+            <span>L'eau des océans froids contient plus de dioxygène dissous que l'eau tropicale chaude</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q23_D">
+            <input type="checkbox" name="q23_D" value="D">
+            <span>La température n'a aucun effet sur la solubilité</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q23-exp"></div>
+    </div>
+    <!-- Question q24 -->
+    <div class="question-card" id="q24-box">
+      <div class="question-title">24. Pourquoi des bulles de gaz CO₂ se forment-elles abondamment lorsqu'on ouvre une bouteille de soda ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q24_A">
+            <input type="radio" name="q24" value="A">
+            <span>Parce que la baisse de pression diminue la solubilité du gaz CO₂ dissous dans le liquide</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q24_B">
+            <input type="radio" name="q24" value="B">
+            <span>Parce que la lumière fait réagir le liquide</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q24_C">
+            <input type="radio" name="q24" value="C">
+            <span>Parce que la pression augmente brusquement</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q24-exp"></div>
+    </div>
+    <!-- Question q25 -->
+    <div class="question-card" id="q25-box">
+      <div class="question-title">25. Que signifie le principe « ce qui se ressemble s'semble » en chimie concernant la solubilité ?</div>
+      <ul class="options-list">
+        <li class="option-item">
+          <label class="option-label" id="lbl_q25_A">
+            <input type="radio" name="q25" value="A">
+            <span>Les substances hydrophobes et lipophiles (comme le goudron) se dissolvent bien dans des solvants gras plutôt que dans l'eau</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q25_B">
+            <input type="radio" name="q25" value="B">
+            <span>Toutes les molécules se dissolvent dans l'eau pure</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q25_C">
+            <input type="radio" name="q25" value="C">
+            <span>Le sel et le sucre ne peuvent jamais être mélangés</span>
+          </label>
+        </li>
+      </ul>
+      <div class="explanation" id="q25-exp"></div>
+    </div>
+    <button type="button" class="btn-submit" onclick="submitQuiz()">Valider mes 25 réponses</button>
+  </form>
+  <div class="result-box" id="resultBox"></div>
+</div>
+<script>
+const answers = {
+  "q1": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Le volume (V) quantifie l'espace tridimensionnel occupé par un corps. Son unité SI est le mètre cube (m³)."
+  },
+  "q2": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exp": "Explication : 1 L correspond à 1 dm³ (soit 10⁻³ m³). 1 mL correspond à 1 cm³ (10⁻⁶ m³). 1 m³ vaut 1 000 litres."
+  },
+  "q3": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La méthode par déplacement de liquide dans une éprouvette graduée permet de mesurer précisément le volume d'un solide quelconque."
+  },
+  "q4": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : La masse quantifie le nombre d'atomes composants le corps. Elle est invariable face aux changements de température ou de pression."
+  },
+  "q5": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Lors d'un changement d'état, la masse se conserve car le nombre d'atomes ne change pas. Cependant, le volume occupé par le gaz est beaucoup plus grand."
+  },
+  "q6": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La masse volumique est le rapport de la masse m sur le volume V : ρ = m / V."
+  },
+  "q7": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : ρ(g/L) = (m(g)×1000) / (V(L)×1000) = m(kg) / V(m³) = ρ(kg/m³). Les facteurs 1000 se simplifient."
+  },
+  "q8": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : À 4 °C, 1 litre d'eau pure possède une masse exacte de 1000 g (1 kg). La masse volumique est donc 1000 g/L."
+  },
+  "q9": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : À 0 °C et sous pression atmosphérique normale, 1 L d'air a une masse de 1,29 g."
+  },
+  "q10": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : La densité des solides et des liquides compare leur masse volumique à celle de l'eau de référence : d = ρ_matière / ρ_eau."
+  },
+  "q11": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Pour les gaz, la masse volumique de référence est celle de l'air : d_gaz = ρ_gaz / ρ_air."
+  },
+  "q12": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : d = 2,70 ⇒ ρ = 2700 g/L (ou 2,7 kg/L). m = ρ × V = 2,7 kg/L × 2 L = 5,4 kg."
+  },
+  "q13": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : 1 / 0,139 ≈ 7,19. L'hélium a une masse volumique de 0,179 g/L, bien inférieure à celle de l'air (1,29 g/L), ce qui le fait s'élever."
+  },
+  "q14": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exp": "Explication : En gelant, l'eau se dilate et sa masse volumique diminue à ≈ 920 g/L. La glace est donc moins dense que l'eau liquide et flotte."
+  },
+  "q15": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La banquise déplace déjà en flottant le volume d'eau exacte qu'elle donnera en fondant. Sa fonte n'augmente pas le niveau de la mer."
+  },
+  "q16": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B"
+    ],
+    "exp": "Explication : La hausse du niveau des mers provient de l'apport d'eau des glaces continentales (qui n'étaient pas dans l'eau) et de la dilatation thermique des océans."
+  },
+  "q17": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : L'huile est hydrophobe et non miscible à l'eau. Sa masse volumique (≈ 900 g/L) étant plus faible que celle de l'eau, elle surnage."
+  },
+  "q18": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La solubilité est la quantité maximale de soluté dissout à saturation dans un volume donné de solution à une température donnée."
+  },
+  "q19": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : À saturation, la limite de solubilité est atteinte. Tout soluté ajouté en excès ne se dissout plus et reste solide au fond."
+  },
+  "q20": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La concentration t varie de 0 jusqu'à la limite maximale s. À saturation, t = s."
+  },
+  "q21": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B"
+    ],
+    "exp": "Explication : À 20 °C, on peut dissoudre au maximum 360 g de sel par litre d'eau, et jusqu'à 2000 g (2 kg !) de sucre par litre d'eau."
+  },
+  "q22": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Pour 1 L d'eau (1000 g) à saturation avec 2000 g de sucre, la masse totale est 3000 g. Le sucre représente 2000/3000 = 67,5 % de la masse."
+  },
+  "q23": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exp": "Explication : Chauffer favorise la dissolution des solides mais chasse les gaz dissous. Les eaux froids sont donc plus riches en dioxygène O₂."
+  },
+  "q24": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : La solubilité des gaz augmente avec la pression. En ouvrant la bouteille, la pression chute, le gaz devient moins soluble et s'échappe en bulles."
+  },
+  "q25": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Les corps gras/apolaires se dissolvent dans d'autres solvants gras/apolaires (lipophilie). Pour enlever du goudron, on utilise un corps gras plutôt que de l'eau."
+  }
+};
+
+function submitQuiz() {
+  let score = 0;
+  const total = Object.keys(answers).length;
+  for (let qId in answers) {
+    const qConfig = answers[qId];
+    const expDiv = document.getElementById(qId + "-exp");
+    
+    if (qConfig.type === "single") {
+      const selected = document.querySelector(`input[name="${qId}"]:checked`);
+      const labels = document.querySelectorAll(`input[name="${qId}"]`);
+      labels.forEach(input => {
+        input.parentElement.classList.remove('correct', 'incorrect');
+      });
+      if (selected) {
+        if (selected.value === qConfig.correct) {
+          score++;
+          selected.parentElement.classList.add('correct');
+        } else {
+          selected.parentElement.classList.add('incorrect');
+          labels.forEach(input => {
+            if (input.value === qConfig.correct) {
+              input.parentElement.classList.add('correct');
+            }
+          });
+        }
+      } else {
+        labels.forEach(input => {
+          if (input.value === qConfig.correct) {
+            input.parentElement.classList.add('correct');
+          }
+        });
+      }
+    } else if (qConfig.type === "multiple") {
+      const correctAnswers = qConfig.correct;
+      const options = ["A", "B", "C", "D"];
+      let userSelected = [];
+      options.forEach(optVal => {
+        const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+        const label = document.getElementById(`lbl_${qId}_${optVal}`);
+        if (label) {
+          label.classList.remove('correct', 'incorrect');
+        }
+        if (input && input.checked) {
+          userSelected.push(optVal);
+        }
+      });
+      const isExactMatch = (
+        userSelected.length === correctAnswers.length &&
+        userSelected.every(val => correctAnswers.includes(val))
+      );
+      if (isExactMatch) {
+        score++;
+      }
+      options.forEach(optVal => {
+        const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+        const label = document.getElementById(`lbl_${qId}_${optVal}`);
+        if (label) {
+          const isCorrectOption = correctAnswers.includes(optVal);
+          const isChecked = input && input.checked;
+          if (isChecked && isCorrectOption) {
+            label.classList.add('correct');
+          } else if (isChecked && !isCorrectOption) {
+            label.classList.add('incorrect');
+          } else if (!isChecked && isCorrectOption) {
+            label.classList.add('correct');
+          }
+        }
+      });
+    }
+    expDiv.style.display = 'block';
+    expDiv.textContent = qConfig.exp;
+  }
+  const percentage = Math.round((score / total) * 100);
+  const resultBox = document.getElementById('resultBox');
+  resultBox.style.display = 'block';
+  resultBox.innerHTML = `Résultat final : ${score} / ${total} (${percentage} %)`;
+  resultBox.scrollIntoView({ behavior: 'smooth' });
+}
+
+</script>
+</body>
+</html>
