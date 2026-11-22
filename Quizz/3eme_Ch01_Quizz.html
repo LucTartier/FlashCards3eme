@@ -1,174 +1,173 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3eme Ch01 Quizz</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #1e293b;
-      --success: #16a34a;
-      --error: #dc2626;
-      --border: #e2e8f0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3eme Ch01 Quizz</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --success: #16a34a;
+  --error: #dc2626;
+  --border: #e2e8f0;
+}
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      padding: 20px;
-      margin: 0;
-    }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px;
+  margin: 0;
+}
 
-    .quiz-container {
-      max-width: 780px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
+.quiz-container {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
 
-    .quiz-header {
-      text-align: center;
-      margin-bottom: 25px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 15px;
-    }
+.quiz-header {
+  text-align: center;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 15px;
+}
 
-    .quiz-header h1 {
-      margin: 0 0 10px 0;
-      color: var(--primary);
-      font-size: 1.8rem;
-    }
+.quiz-header h1 {
+  margin: 0 0 10px 0;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
 
-    .quiz-header p {
-      margin: 0;
-      color: #64748b;
-      font-size: 1rem;
-    }
+.quiz-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
 
-    .question-card {
-      margin-bottom: 22px;
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background-color: #fff;
-    }
+.question-card {
+  margin-bottom: 22px;
+  padding: 18px;
+  background: #dbeafe;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+}
 
-    .question-title {
-      font-weight: 600;
-      font-size: 1.05rem;
-      margin-bottom: 14px;
-      color: #0f172a;
-    }
+.question-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
 
-    .options-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    .option-item {
-      margin-bottom: 8px;
-    }
+.option-item {
+  margin-bottom: 8px;
+}
 
-    .option-label {
-      display: flex;
-      align-items: center;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-    }
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background 0.2s, border-color 0.2s;
+}
 
-    .option-label:hover {
-      background-color: #f1f5f9;
-    }
+.option-label:hover {
+  background-color: #f1f5f9;
+}
 
-    .option-label input {
-      margin-right: 12px;
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
+.option-label input {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
 
-    .correct {
-      background-color: #dcfce7 !important;
-      border-color: var(--success) !important;
-      color: #14532d;
-      font-weight: 600;
-    }
+.correct {
+  background-color: #dcfce7 !important;
+  border-color: var(--success) !important;
+  color: #14532d;
+  font-weight: 600;
+}
 
-    .incorrect {
-      background-color: #fee2e2 !important;
-      border-color: var(--error) !important;
-      color: #7f1d1d;
-    }
+.incorrect {
+  background-color: #fee2e2 !important;
+  border-color: var(--error) !important;
+  color: #7f1d1d;
+}
 
-    .explanation {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      font-size: 0.92rem;
-      background-color: #eff6ff;
-      border-left: 4px solid var(--primary);
-      border-radius: 4px;
-      color: #1e3a8a;
-    }
+.explanation {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  background-color: #eff6ff;
+  border-left: 4px solid var(--primary);
+  border-radius: 4px;
+  color: #1e3a8a;
+}
 
-    .btn-submit {
-      width: 100%;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 16px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 25px;
-      transition: background 0.2s, transform 0.1s;
-    }
+.btn-submit {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background 0.2s, transform 0.1s;
+}
 
-    .btn-submit:hover {
-      background-color: var(--primary-hover);
-    }
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
 
-    .btn-submit:active {
-      transform: scale(0.99);
-    }
+.btn-submit:active {
+  transform: scale(0.99);
+}
 
-    .result-box {
-      display: none;
-      text-align: center;
-      margin-top: 25px;
-      padding: 20px;
-      background: #dbeafe;
-      border: 2px solid var(--primary);
-      border-radius: 10px;
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #1e40af;
-    }
-  </style>
+.result-box {
+  display: none;
+  text-align: center;
+  margin-top: 25px;
+  padding: 20px;
+  background: #dbeafe;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1e40af;
+}
+</style>
 </head>
 <body>
-
 <div class="quiz-container">
   <div class="quiz-header">
     <h1>3eme Ch01 Quizz</h1>
     <p>De l'Univers aux atomes (27 questions)</p>
   </div>
-
-  <form id="quizForm">
-    <!-- Question 1 -->
+  <form id="quizForm" autocomplete="off">
+    <!-- Question q1 -->
     <div class="question-card" id="q1-box">
       <div class="question-title">1. Il y a environ 13,8 milliards d'années, l'Univers s'est subitement agrandi à partir d'une singularité. Comment s'appelle cette théorie ?</div>
       <ul class="options-list">
@@ -193,8 +192,7 @@
       </ul>
       <div class="explanation" id="q1-exp"></div>
     </div>
-
-    <!-- Question 2 -->
+    <!-- Question q2 -->
     <div class="question-card" id="q2-box">
       <div class="question-title">2. Quels atomes légers se sont formés en premier, juste après le Big Bang ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
@@ -225,8 +223,7 @@
       </ul>
       <div class="explanation" id="q2-exp"></div>
     </div>
-
-    <!-- Question 3 -->
+    <!-- Question q3 -->
     <div class="question-card" id="q3-box">
       <div class="question-title">3. Comment se sont formés les atomes plus lourds que le fer (jusqu'à l'uranium) présents sur Terre ?</div>
       <ul class="options-list">
@@ -251,8 +248,7 @@
       </ul>
       <div class="explanation" id="q3-exp"></div>
     </div>
-
-    <!-- Question 4 -->
+    <!-- Question q4 -->
     <div class="question-card" id="q4-box">
       <div class="question-title">4. À partir de quoi et quand s'est formé notre Système solaire ?</div>
       <ul class="options-list">
@@ -277,8 +273,7 @@
       </ul>
       <div class="explanation" id="q4-exp"></div>
     </div>
-
-    <!-- Question 5 -->
+    <!-- Question q5 -->
     <div class="question-card" id="q5-box">
       <div class="question-title">5. Quelles planètes du Système solaire sont correctement ordonnées de la plus proche à la plus éloignée du Soleil ? (Moyen mnémotechnique : 'Mais Vous Tirez Mal ! Je Suis Un Novice...')</div>
       <ul class="options-list">
@@ -303,8 +298,7 @@
       </ul>
       <div class="explanation" id="q5-exp"></div>
     </div>
-
-    <!-- Question 6 -->
+    <!-- Question q6 -->
     <div class="question-card" id="q6-box">
       <div class="question-title">6. Quelle est la vitesse approximative de la lumière dans le vide ?</div>
       <ul class="options-list">
@@ -329,8 +323,7 @@
       </ul>
       <div class="explanation" id="q6-exp"></div>
     </div>
-
-    <!-- Question 7 -->
+    <!-- Question q7 -->
     <div class="question-card" id="q7-box">
       <div class="question-title">7. Combien de temps met la lumière du Soleil pour nous parvenir sur Terre, située à une distance de 1 unité astronomique (1 u.a. = 150 millions de km) ?</div>
       <ul class="options-list">
@@ -355,8 +348,7 @@
       </ul>
       <div class="explanation" id="q7-exp"></div>
     </div>
-
-    <!-- Question 8 -->
+    <!-- Question q8 -->
     <div class="question-card" id="q8-box">
       <div class="question-title">8. Concernant les unités de distance en astronomie, quelles affirmations sont exactes ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
@@ -387,8 +379,7 @@
       </ul>
       <div class="explanation" id="q8-exp"></div>
     </div>
-
-    <!-- Question 9 -->
+    <!-- Question q9 -->
     <div class="question-card" id="q9-box">
       <div class="question-title">9. Quelle est l'étoile la plus proche de notre Système solaire (Proxima du Centaure) et à quelle distance se trouve-t-elle ?</div>
       <ul class="options-list">
@@ -413,8 +404,7 @@
       </ul>
       <div class="explanation" id="q9-exp"></div>
     </div>
-
-    <!-- Question 10 -->
+    <!-- Question q10 -->
     <div class="question-card" id="q10-box">
       <div class="question-title">10. Quelles sont les caractéristiques de notre galaxie, la Voie lactée ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
@@ -445,8 +435,7 @@
       </ul>
       <div class="explanation" id="q10-exp"></div>
     </div>
-
-    <!-- Question 11 -->
+    <!-- Question q11 -->
     <div class="question-card" id="q11-box">
       <div class="question-title">11. Quelle est la première grande galaxie semblable à la nôtre et à quelle distance se trouve-t-elle ?</div>
       <ul class="options-list">
@@ -471,8 +460,7 @@
       </ul>
       <div class="explanation" id="q11-exp"></div>
     </div>
-
-    <!-- Question 12 -->
+    <!-- Question q12 -->
     <div class="question-card" id="q12-box">
       <div class="question-title">12. Comment et quand s'est formée la Terre ?</div>
       <ul class="options-list">
@@ -497,8 +485,7 @@
       </ul>
       <div class="explanation" id="q12-exp"></div>
     </div>
-
-    <!-- Question 13 -->
+    <!-- Question q13 -->
     <div class="question-card" id="q13-box">
       <div class="question-title">13. Si l'on ramène l'histoire de la Terre (4,56 milliards d'années) à un tour d'horloge de 12 heures, à quel moment apparaissent les premiers hominidés ?</div>
       <ul class="options-list">
@@ -523,8 +510,7 @@
       </ul>
       <div class="explanation" id="q13-exp"></div>
     </div>
-
-    <!-- Question 14 -->
+    <!-- Question q14 -->
     <div class="question-card" id="q14-box">
       <div class="question-title">14. Quels sont les deux constituants fondamentaux d'un atome ?</div>
       <ul class="options-list">
@@ -549,8 +535,7 @@
       </ul>
       <div class="explanation" id="q14-exp"></div>
     </div>
-
-    <!-- Question 15 -->
+    <!-- Question q15 -->
     <div class="question-card" id="q15-box">
       <div class="question-title">15. Quelles particules composent le noyau d'un atome (les nucléons) ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
@@ -581,8 +566,7 @@
       </ul>
       <div class="explanation" id="q15-exp"></div>
     </div>
-
-    <!-- Question 16 -->
+    <!-- Question q16 -->
     <div class="question-card" id="q16-box">
       <div class="question-title">16. Pourquoi un atome est-il électriquement neutre ?</div>
       <ul class="options-list">
@@ -607,8 +591,7 @@
       </ul>
       <div class="explanation" id="q16-exp"></div>
     </div>
-
-    <!-- Question 17 -->
+    <!-- Question q17 -->
     <div class="question-card" id="q17-box">
       <div class="question-title">17. Dans la notation symbolique d'un noyau atomique ᴬᲫX, que représentent Z et A ?</div>
       <ul class="options-list">
@@ -633,8 +616,7 @@
       </ul>
       <div class="explanation" id="q17-exp"></div>
     </div>
-
-    <!-- Question 18 -->
+    <!-- Question q18 -->
     <div class="question-card" id="q18-box">
       <div class="question-title">18. L'atome de lithium est représenté par ⁷₃Li. Quelle est la composition exacte de cet atome neutre ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
@@ -665,8 +647,7 @@
       </ul>
       <div class="explanation" id="q18-exp"></div>
     </div>
-
-    <!-- Question 19 -->
+    <!-- Question q19 -->
     <div class="question-card" id="q19-box">
       <div class="question-title">19. Que signifie l'expression 'l'atome a une structure lacunaire' ?</div>
       <ul class="options-list">
@@ -691,8 +672,7 @@
       </ul>
       <div class="explanation" id="q19-exp"></div>
     </div>
-
-    <!-- Question 20 -->
+    <!-- Question q20 -->
     <div class="question-card" id="q20-box">
       <div class="question-title">20. Où se situe la quasi-totalité de la masse d'un atome et pourquoi ?</div>
       <ul class="options-list">
@@ -717,8 +697,7 @@
       </ul>
       <div class="explanation" id="q20-exp"></div>
     </div>
-
-    <!-- Question 21 -->
+    <!-- Question q21 -->
     <div class="question-card" id="q21-box">
       <div class="question-title">21. Quels sont les ordres de grandeur respectifs du diamètre d'un atome et de celui de son noyau ?</div>
       <ul class="options-list">
@@ -743,8 +722,7 @@
       </ul>
       <div class="explanation" id="q21-exp"></div>
     </div>
-
-    <!-- Question 22 -->
+    <!-- Question q22 -->
     <div class="question-card" id="q22-box">
       <div class="question-title">22. Qu'est-ce qu'une molécule comme l'eau (H₂O) ?</div>
       <ul class="options-list">
@@ -769,8 +747,7 @@
       </ul>
       <div class="explanation" id="q22-exp"></div>
     </div>
-
-    <!-- Question 23 -->
+    <!-- Question q23 -->
     <div class="question-card" id="q23-box">
       <div class="question-title">23. Comment sont classés les atomes dans le tableau périodique des éléments ?</div>
       <ul class="options-list">
@@ -795,8 +772,7 @@
       </ul>
       <div class="explanation" id="q23-exp"></div>
     </div>
-
-    <!-- Question 24 -->
+    <!-- Question q24 -->
     <div class="question-card" id="q24-box">
       <div class="question-title">24. Comment se déplacent les électrons autour du noyau dans le modèle moderne de l'atome ?</div>
       <ul class="options-list">
@@ -821,8 +797,7 @@
       </ul>
       <div class="explanation" id="q24-exp"></div>
     </div>
-
-    <!-- Question 25 -->
+    <!-- Question q25 -->
     <div class="question-card" id="q25-box">
       <div class="question-title">25. Que se passe-t-il à grande échelle entre les galaxies lointaines ?</div>
       <ul class="options-list">
@@ -847,8 +822,7 @@
       </ul>
       <div class="explanation" id="q25-exp"></div>
     </div>
-
-    <!-- Question 26 -->
+    <!-- Question q26 -->
     <div class="question-card" id="q26-box">
       <div class="question-title">26. Qu'est-ce que le 'fond diffus cosmologique' ?</div>
       <ul class="options-list">
@@ -873,8 +847,7 @@
       </ul>
       <div class="explanation" id="q26-exp"></div>
     </div>
-
-    <!-- Question 27 -->
+    <!-- Question q27 -->
     <div class="question-card" id="q27-box">
       <div class="question-title">27. Concernant le symbole des éléments et leur famille chimique, quelles affirmations sont exactes ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
@@ -905,308 +878,262 @@
       </ul>
       <div class="explanation" id="q27-exp"></div>
     </div>
-
     <button type="button" class="btn-submit" onclick="submitQuiz()">Valider mes 27 réponses</button>
   </form>
-
   <div class="result-box" id="resultBox"></div>
 </div>
-
 <script>
-  const answers = {
-    "q1": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : La théorie du Big Bang décrit l'expansion de l'Univers à partir d'une singularité survenue il y a environ 13,8 milliards d'années."
-    },
-    "q2": {
-        "type": "multiple",
-        "correct": [
-            "A",
-            "B"
-        ],
-        "exp": "Explication : Seuls les atomes légers comme l'hydrogène et l'hélium se sont formés très rapidement après le Big Bang."
-    },
-    "q3": {
-        "type": "single",
-        "correct": [
-            "C"
-        ],
-        "exp": "Explication : Les atomes de taille moyenne (jusqu'au fer) sont fabriqués dans les étoiles, tandis que les atomes plus lourds que le fer sont créés lors de l'explosion des supernovae."
-    },
-    "q4": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Le Soleil (étoile de 3ème génération) et son système se sont formés il y a 4,6 milliards d'années par l'effondrement d'une nébuleuse issue d'une supernova."
-    },
-    "q5": {
-        "type": "single",
-        "correct": [
-            "A"
-        ],
-        "exp": "Explication : L'ordre exact des 8 planètes est : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune."
-    },
-    "q6": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : La vitesse de la lumière est d'environ 300 000 km/s (exactement 299 792 458 m/s)."
-    },
-    "q7": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : t = d / v = (150 × 10⁶ km) / (300 000 km/s) = 500 secondes = 8 min 20 s."
-    },
-    "q8": {
-        "type": "multiple",
-        "correct": [
-            "A",
-            "B",
-            "D"
-        ],
-        "exp": "Explication : L'unité astronomique (u.a.) convient au système solaire (Terre-Soleil). L'année-lumière (a.l.) vaut environ 10¹³ km (ou 63 241 u.a.)."
-    },
-    "q9": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Proxima du Centaure (du système Alpha-Centauri) est l'étoile la plus proche du Soleil, située à 4,2 a.l."
-    },
-    "q10": {
-        "type": "multiple",
-        "correct": [
-            "A",
-            "B",
-            "C"
-        ],
-        "exp": "Explication : La Voie lactée contient 200 à 400 milliards d'étoiles, au moins 100 milliards de planètes et mesure environ 100 000 a.l. de diamètre."
-    },
-    "q11": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : La galaxie d'Andromède est la principale galaxie voisine de la Voie lactée au sein du Groupe local, située à 2,5 millions d'a.l."
-    },
-    "q12": {
-        "type": "single",
-        "correct": [
-            "A"
-        ],
-        "exp": "Explication : La Terre s'est formée il y a 4 560 millions d'années en même temps que le reste du système solaire par accrétion d'astéroïdes."
-    },
-    "q13": {
-        "type": "single",
-        "correct": [
-            "C"
-        ],
-        "exp": "Explication : Sur 12h, la vie apparaît à 4h, les dinosaures disparaissent à 11h49 et les premiers hominidés apparaissent tout à la fin, à 11h59'20\"."
-    },
-    "q14": {
-        "type": "single",
-        "correct": [
-            "A"
-        ],
-        "exp": "Explication : Tout atome est constitué d'un noyau central et d'un nuage électronique périphérique."
-    },
-    "q15": {
-        "type": "multiple",
-        "correct": [
-            "A",
-            "B"
-        ],
-        "exp": "Explication : Le noyau contient des protons (+) et des neutrons (neutres), appelés collectivement nucléons. Les électrons (-) orbitent autour du noyau."
-    },
-    "q16": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Les charges positives des protons compensent exactement les charges négatives des électrons car l'atome en possède le même nombre."
-    },
-    "q17": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Z est le numéro atomique (nombre de protons = nombre d'électrons). A est le nombre de masse ou nombre de nucléons (protons + neutrons)."
-    },
-    "q18": {
-        "type": "multiple",
-        "correct": [
-            "A",
-            "B",
-            "C"
-        ],
-        "exp": "Explication : Z=3 donc 3 protons et 3 électrons. A=7 donc 7 nucléons au total, d'où 7 - 3 = 4 neutrons."
-    },
-    "q19": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Le noyau est environ 100 000 fois plus petit que l'atome entier. La matière est donc extrêmement condensée dans le noyau et séparée par du vide."
-    },
-    "q20": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Un proton ou un neutron est environ 2 000 fois plus lourd qu'un électron. La masse de l'atome est donc pratiquement égale à celle de son noyau."
-    },
-    "q21": {
-        "type": "single",
-        "correct": [
-            "A"
-        ],
-        "exp": "Explication : Le diamètre d'un atome est de l'ordre de 10⁻¹⁰ m (0,1 nanomètre), et celui du noyau de 10⁻¹⁵ m (1 femtomètre), soit 100 000 fois plus petit."
-    },
-    "q22": {
-        "type": "single",
-        "correct": [
-            "A"
-        ],
-        "exp": "Explication : Une molécule est un assemblage électriquement neutre d'atomes liés entre eux."
-    },
-    "q23": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Les éléments sont rangés par numéro atomique Z croissant. La position dans les colonnes regroupe les éléments ayant des propriétés chimiques similaires."
-    },
-    "q24": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : Contrairement à l'ancien modèle planétaire, les électrons se déplacent très vite et de façon désordonnée autour du noyau, formant un nuage électronique."
-    },
-    "q25": {
-        "type": "single",
-        "correct": [
-            "B"
-        ],
-        "exp": "Explication : À grande échelle, l'espace se dilate et provoque l'éloignement mutuel des galaxies : c'est l'expansion de l'Univers."
-    },
-    "q26": {
-        "type": "single",
-        "correct": [
-            "A"
-        ],
-        "exp": "Explication : Le fond diffus cosmologique est le rayonnement fossile émis environ 380 000 ans après le Big Bang, première lumière à s'être propagée librement."
-    },
-    "q27": {
-        "type": "multiple",
-        "correct": [
-            "A",
-            "B",
-            "C"
-        ],
-        "exp": "Explication : La notation impose une majuscule suivie d'une minuscule (ex: Fe, Na). Les colonnes regroupent les familles chimiques aux propriétés similaires."
-    }
+const answers = {
+  "q1": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La théorie du Big Bang décrit l'expansion de l'Univers à partir d'une singularité survenue il y a environ 13,8 milliards d'années."
+  },
+  "q2": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B"
+    ],
+    "exp": "Explication : Seuls les atomes légers comme l'hydrogène et l'hélium se sont formés très rapidement après le Big Bang."
+  },
+  "q3": {
+    "type": "single",
+    "correct": "C",
+    "exp": "Explication : Les atomes de taille moyenne (jusqu'au fer) sont fabriqués dans les étoiles, tandis que les atomes plus lourds que le fer sont créés lors de l'explosion des supernovae."
+  },
+  "q4": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Le Soleil (étoile de 3ème génération) et son système se sont formés il y a 4,6 milliards d'années par l'effondrement d'une nébuleuse issue d'une supernova."
+  },
+  "q5": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : L'ordre exact des 8 planètes est : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune."
+  },
+  "q6": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La vitesse de la lumière est d'environ 300 000 km/s (exactement 299 792 458 m/s)."
+  },
+  "q7": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : t = d / v = (150 × 10⁶ km) / (300 000 km/s) = 500 secondes = 8 min 20 s."
+  },
+  "q8": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "exp": "Explication : L'unité astronomique (u.a.) convient au système solaire (Terre-Soleil). L'année-lumière (a.l.) vaut environ 10¹³ km (ou 63 241 u.a.)."
+  },
+  "q9": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Proxima du Centaure (du système Alpha-Centauri) est l'étoile la plus proche du Soleil, située à 4,2 a.l."
+  },
+  "q10": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exp": "Explication : La Voie lactée contient 200 à 400 milliards d'étoiles, au moins 100 milliards de planètes et mesure environ 100 000 a.l. de diamètre."
+  },
+  "q11": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La galaxie d'Andromède est la principale galaxie voisine de la Voie lactée au sein du Groupe local, située à 2,5 millions d'a.l."
+  },
+  "q12": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : La Terre s'est formée il y a 4 560 millions d'années en même temps que le reste du système solaire par accrétion d'astéroïdes."
+  },
+  "q13": {
+    "type": "single",
+    "correct": "C",
+    "exp": "Explication : Sur 12h, la vie apparaît à 4h, les dinosaures disparaissent à 11h49 et les premiers hominidés apparaissent tout à la fin, à 11h59'20\"."
+  },
+  "q14": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Tout atome est constitué d'un noyau central et d'un nuage électronique périphérique."
+  },
+  "q15": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B"
+    ],
+    "exp": "Explication : Le noyau contient des protons (+) et des neutrons (neutres), appelés collectivement nucléons. Les électrons (-) orbitent autour du noyau."
+  },
+  "q16": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Les charges positives des protons compensent exactement les charges négatives des électrons car l'atome en possède le même nombre."
+  },
+  "q17": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Z est le numéro atomique (nombre de protons = nombre d'électrons). A est le nombre de masse ou nombre de nucléons (protons + neutrons)."
+  },
+  "q18": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exp": "Explication : Z=3 donc 3 protons et 3 électrons. A=7 donc 7 nucléons au total, d'où 7 - 3 = 4 neutrons."
+  },
+  "q19": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Le noyau est environ 100 000 fois plus petit que l'atome entier. La matière est donc extrêmement condensée dans le noyau et séparée par du vide."
+  },
+  "q20": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Un proton ou un neutron est environ 2 000 fois plus lourd qu'un électron. La masse de l'atome est donc pratiquement égale à celle de son noyau."
+  },
+  "q21": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Le diamètre d'un atome est de l'ordre de 10⁻¹⁰ m (0,1 nanomètre), et celui du noyau de 10⁻¹⁵ m (1 femtomètre), soit 100 000 fois plus petit."
+  },
+  "q22": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Une molécule est un assemblage électriquement neutre d'atomes liés entre eux."
+  },
+  "q23": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Les éléments sont rangés par numéro atomique Z croissant. La position dans les colonnes regroupe les éléments ayant des propriétés chimiques similaires."
+  },
+  "q24": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Contrairement à l'ancien modèle planétaire, les électrons se déplacent très vite et de façon désordonnée autour du noyau, formant un nuage électronique."
+  },
+  "q25": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : À grande échelle, l'espace se dilate et provoque l'éloignement mutuel des galaxies : c'est l'expansion de l'Univers."
+  },
+  "q26": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Le fond diffus cosmologique est le rayonnement fossile émis environ 380 000 ans après le Big Bang, première lumière à s'être propagée librement."
+  },
+  "q27": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exp": "Explication : La notation impose une majuscule suivie d'une minuscule (ex: Fe, Na). Les colonnes regroupent les familles chimiques aux propriétés similaires."
+  }
 };
+// Shuffle options inside each question on page load without changing question order
+window.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('quizForm');
+  if (form) form.reset();
+  document.querySelectorAll('.options-list').forEach(ul => {
+    const items = Array.from(ul.children);
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    items.forEach(item => ul.appendChild(item));
+  });
+});
 
-  function submitQuiz() {
-    let score = 0;
-    const total = Object.keys(answers).length;
-
-    for (let qId in answers) {
-      const qConfig = answers[qId];
-      const expDiv = document.getElementById(qId + "-exp");
-      
-      if (qConfig.type === "single") {
-        const selected = document.querySelector(`input[name="${qId}"]:checked`);
-        const labels = document.querySelectorAll(`input[name="${qId}"]`);
-
-        labels.forEach(input => {
-          input.parentElement.classList.remove('correct', 'incorrect');
-        });
-
-        if (selected) {
-          if (selected.value === qConfig.correct) {
-            score++;
-            selected.parentElement.classList.add('correct');
-          } else {
-            selected.parentElement.classList.add('incorrect');
-            labels.forEach(input => {
-              if (input.value === qConfig.correct) {
-                input.parentElement.classList.add('correct');
-              }
-            });
-          }
+function submitQuiz() {
+  let score = 0;
+  const total = Object.keys(answers).length;
+  for (let qId in answers) {
+    const qConfig = answers[qId];
+    const expDiv = document.getElementById(qId + "-exp");
+    
+    if (qConfig.type === "single") {
+      const selected = document.querySelector(`input[name="${qId}"]:checked`);
+      const labels = document.querySelectorAll(`input[name="${qId}"]`);
+      labels.forEach(input => {
+        input.parentElement.classList.remove('correct', 'incorrect');
+      });
+      if (selected) {
+        if (selected.value === qConfig.correct) {
+          score++;
+          selected.parentElement.classList.add('correct');
         } else {
+          selected.parentElement.classList.add('incorrect');
           labels.forEach(input => {
             if (input.value === qConfig.correct) {
               input.parentElement.classList.add('correct');
             }
           });
         }
-      } else if (qConfig.type === "multiple") {
-        const correctAnswers = qConfig.correct;
-        const options = ["A", "B", "C", "D"];
-        let userSelected = [];
-
-        options.forEach(optVal => {
-          const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
-          const label = document.getElementById(`lbl_${qId}_${optVal}`);
-          
-          if (label) {
-            label.classList.remove('correct', 'incorrect');
-          }
-
-          if (input && input.checked) {
-            userSelected.push(optVal);
-          }
-        });
-
-        const isExactMatch = (
-          userSelected.length === correctAnswers.length &&
-          userSelected.every(val => correctAnswers.includes(val))
-        );
-
-        if (isExactMatch) {
-          score++;
-        }
-
-        options.forEach(optVal => {
-          const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
-          const label = document.getElementById(`lbl_${qId}_${optVal}`);
-
-          if (label) {
-            const isCorrectOption = correctAnswers.includes(optVal);
-            const isChecked = input && input.checked;
-
-            if (isChecked && isCorrectOption) {
-              label.classList.add('correct');
-            } else if (isChecked && !isCorrectOption) {
-              label.classList.add('incorrect');
-            } else if (!isChecked && isCorrectOption) {
-              label.classList.add('correct');
-            }
+      } else {
+        labels.forEach(input => {
+          if (input.value === qConfig.correct) {
+            input.parentElement.classList.add('correct');
           }
         });
       }
-
-      expDiv.style.display = 'block';
-      expDiv.textContent = qConfig.exp;
+    } else if (qConfig.type === "multiple") {
+      const correctAnswers = qConfig.correct;
+      const options = ["A", "B", "C", "D"];
+      let userSelected = [];
+      options.forEach(optVal => {
+        const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+        const label = document.getElementById(`lbl_${qId}_${optVal}`);
+        if (label) {
+          label.classList.remove('correct', 'incorrect');
+        }
+        if (input && input.checked) {
+          userSelected.push(optVal);
+        }
+      });
+      const isExactMatch = (
+        userSelected.length === correctAnswers.length &&
+        userSelected.every(val => correctAnswers.includes(val))
+      );
+      if (isExactMatch) {
+        score++;
+      }
+      options.forEach(optVal => {
+        const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+        const label = document.getElementById(`lbl_${qId}_${optVal}`);
+        if (label) {
+          const isCorrectOption = correctAnswers.includes(optVal);
+          const isChecked = input && input.checked;
+          if (isChecked && isCorrectOption) {
+            label.classList.add('correct');
+          } else if (isChecked && !isCorrectOption) {
+            label.classList.add('incorrect');
+          } else if (!isChecked && isCorrectOption) {
+            label.classList.add('correct');
+          }
+        }
+      });
     }
-
-    const percentage = Math.round((score / total) * 100);
-    const resultBox = document.getElementById('resultBox');
-    resultBox.style.display = 'block';
-    resultBox.innerHTML = `Résultat final : ${score} / ${total} (${percentage} %)`;
-    resultBox.scrollIntoView({ behavior: 'smooth' });
+    expDiv.style.display = 'block';
+    expDiv.textContent = qConfig.exp;
   }
+  const percentage = Math.round((score / total) * 100);
+  const resultBox = document.getElementById('resultBox');
+  resultBox.style.display = 'block';
+  resultBox.innerHTML = `Résultat final : ${score} / ${total} (${percentage} %)`;
+  resultBox.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
-
 </body>
 </html>

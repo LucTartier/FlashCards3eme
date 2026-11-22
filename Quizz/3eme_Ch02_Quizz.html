@@ -1,1144 +1,1058 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3eme Ch02 Quizz</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #1e293b;
-      --success: #16a34a;
-      --error: #dc2626;
-      --border: #e2e8f0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3eme Ch02 Quizz</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --success: #16a34a;
+  --error: #dc2626;
+  --border: #e2e8f0;
+}
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      padding: 20px;
-      margin: 0;
-    }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px;
+  margin: 0;
+}
 
-    .quiz-container {
-      max-width: 780px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
+.quiz-container {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
 
-    .quiz-header {
-      text-align: center;
-      margin-bottom: 25px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 15px;
-    }
+.quiz-header {
+  text-align: center;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 15px;
+}
 
-    .quiz-header h1 {
-      margin: 0 0 10px 0;
-      color: var(--primary);
-      font-size: 1.8rem;
-    }
+.quiz-header h1 {
+  margin: 0 0 10px 0;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
 
-    .quiz-header p {
-      margin: 0;
-      color: #64748b;
-      font-size: 1rem;
-    }
+.quiz-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
 
-    .question-card {
-      margin-bottom: 22px;
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background-color: #fff;
-    }
+.question-card {
+  margin-bottom: 22px;
+  padding: 18px;
+  background: #dbeafe;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+}
 
-    .question-title {
-      font-weight: 600;
-      font-size: 1.05rem;
-      margin-bottom: 14px;
-      color: #0f172a;
-    }
+.question-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
 
-    .options-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    .option-item {
-      margin-bottom: 8px;
-    }
+.option-item {
+  margin-bottom: 8px;
+}
 
-    .option-label {
-      display: flex;
-      align-items: center;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-    }
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background 0.2s, border-color 0.2s;
+}
 
-    .option-label:hover {
-      background-color: #f1f5f9;
-    }
+.option-label:hover {
+  background-color: #f1f5f9;
+}
 
-    .option-label input {
-      margin-right: 12px;
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
+.option-label input {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
 
-    /* États de validation */
-    .correct {
-      background-color: #dcfce7 !important;
-      border-color: var(--success) !important;
-      color: #14532d;
-      font-weight: 600;
-    }
+.correct {
+  background-color: #dcfce7 !important;
+  border-color: var(--success) !important;
+  color: #14532d;
+  font-weight: 600;
+}
 
-    .incorrect {
-      background-color: #fee2e2 !important;
-      border-color: var(--error) !important;
-      color: #7f1d1d;
-    }
+.incorrect {
+  background-color: #fee2e2 !important;
+  border-color: var(--error) !important;
+  color: #7f1d1d;
+}
 
-    .explanation {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      font-size: 0.92rem;
-      background-color: #eff6ff;
-      border-left: 4px solid var(--primary);
-      border-radius: 4px;
-      color: #1e3a8a;
-    }
+.explanation {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  background-color: #eff6ff;
+  border-left: 4px solid var(--primary);
+  border-radius: 4px;
+  color: #1e3a8a;
+}
 
-    .btn-submit {
-      width: 100%;
-      background-color: var(--primary);
-      color: white;
-      border: none;
-      padding: 16px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 25px;
-      transition: background 0.2s, transform 0.1s;
-    }
+.btn-submit {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: background 0.2s, transform 0.1s;
+}
 
-    .btn-submit:hover {
-      background-color: var(--primary-hover);
-    }
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
 
-    .btn-submit:active {
-      transform: scale(0.99);
-    }
+.btn-submit:active {
+  transform: scale(0.99);
+}
 
-    .result-box {
-      display: none;
-      text-align: center;
-      margin-top: 25px;
-      padding: 20px;
-      background: #dbeafe;
-      border: 2px solid var(--primary);
-      border-radius: 10px;
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #1e40af;
-    }
-  </style>
+.result-box {
+  display: none;
+  text-align: center;
+  margin-top: 25px;
+  padding: 20px;
+  background: #dbeafe;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1e40af;
+}
+</style>
 </head>
 <body>
-
 <div class="quiz-container">
   <div class="quiz-header">
     <h1>3eme Ch02 Quizz</h1>
-    <p>Les combustions, les ions et le pH (27 questions)</p>
+    <p>Les combustions et les ions (25 questions)</p>
   </div>
-
-  <form id="quizForm">
-    
-    <!-- Question 1 -->
+  <form id="quizForm" autocomplete="off">
+    <!-- Question q1 -->
     <div class="question-card" id="q1-box">
-      <div class="question-title">1. Quels sont les deux composants principaux de l'air sec ?</div>
+      <div class="question-title">1. Quels sont les deux constituants majoritaires de l'air atmosphérique ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q1_A">
             <input type="radio" name="q1" value="A">
-            <span>78 % de diazote (N₂) et 21 % de dioxygène (O₂)</span>
+            <span>50 % de dioxygène O₂ et 50 % de dioxyde de carbone CO₂</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q1_B">
             <input type="radio" name="q1" value="B">
-            <span>78 % de dioxygène (O₂) et 21 % de diazote (N₂)</span>
+            <span>78 % de diazote N₂ et 21 % de dioxygène O₂</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q1_C">
             <input type="radio" name="q1" value="C">
-            <span>50 % de dioxyde de carbone (CO₂) et 50 % de dioxygène (O₂)</span>
+            <span>99 % d'argon et 1 % de dioxygène O₂</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q1-exp"></div>
     </div>
-
-    <!-- Question 2 -->
+    <!-- Question q2 -->
     <div class="question-card" id="q2-box">
-      <div class="question-title">2. Quels gaz parmi les suivants contribuent à l'augmentation de l'effet de serre ou à la pollution atmosphérique selon le cours ? (Plusieurs réponses possibles)</div>
+      <div class="question-title">2. Quel gaz est le plus abondant dans le 1 % restant de l'atmosphère terrestre ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q2_A">
-            <input type="checkbox" name="q2_A" value="A">
-            <span>Le dioxyde de carbone (CO₂)</span>
+            <input type="radio" name="q2" value="A">
+            <span>L'argon (environ 0,9 %)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q2_B">
-            <input type="checkbox" name="q2_B" value="B">
-            <span>Le méthane (CH₄)</span>
+            <input type="radio" name="q2" value="B">
+            <span>Le dioxyde de carbone (CO₂)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q2_C">
-            <input type="checkbox" name="q2_C" value="C">
-            <span>Le protoxyde d'azote (N₂O)</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q2_D">
-            <input type="checkbox" name="q2_D" value="D">
-            <span>Le dioxygène (O₂)</span>
+            <input type="radio" name="q2" value="C">
+            <span>Le méthane (CH₄)</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q2-exp"></div>
     </div>
-
-    <!-- Question 3 -->
+    <!-- Question q3 -->
     <div class="question-card" id="q3-box">
-      <div class="question-title">3. Lors de la combustion incomplète du méthane dans un espace mal ventilé (2 CH₄ + 3 O₂ → 2 CO + 4 H₂O), quel gaz toxique, incolore et inodore se forme en plus de l'eau ?</div>
+      <div class="question-title">3. Quels rôles majeurs joue le dioxyde de carbone (CO₂) présent à 0,04 % (400 ppm) dans l'atmosphère ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q3_A">
-            <input type="radio" name="q3" value="A">
-            <span>Le monoxyde de carbone (CO)</span>
+            <input type="checkbox" name="q3_A" value="A">
+            <span>Il est indispensable à la photosynthèse des végétaux</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q3_B">
-            <input type="radio" name="q3" value="B">
-            <span>Le dioxyde de carbone (CO₂)</span>
+            <input type="checkbox" name="q3_B" value="B">
+            <span>Il contribue à l'effet de serre naturel permettant de maintenir une température viable sur Terre</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q3_C">
-            <input type="radio" name="q3" value="C">
-            <span>Le diazote (N₂)</span>
+            <input type="checkbox" name="q3_C" value="C">
+            <span>C'est le seul comburant des réactions de combustion</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q3_D">
+            <input type="checkbox" name="q3_D" value="D">
+            <span>Il représente la majorité du gaz contenu dans l'air</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q3-exp"></div>
     </div>
-
-    <!-- Question 4 -->
+    <!-- Question q4 -->
     <div class="question-card" id="q4-box">
-      <div class="question-title">4. Quelle est l'équation bilan de la combustion COMPLÈTE du méthane (CH₄) dans le dioxygène ?</div>
+      <div class="question-title">4. Quels gaz polluants sont rejetés en grande quantité par les moteurs diesel et par l'agriculture industrielle ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q4_A">
-            <input type="radio" name="q4" value="A">
-            <span>CH₄ + 2 O₂ → CO₂ + 2 H₂O</span>
+            <input type="checkbox" name="q4_A" value="A">
+            <span>Le monoxyde d'azote NO et le dioxyde d'azote NO₂ (moteurs diesel)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q4_B">
-            <input type="radio" name="q4" value="B">
-            <span>CH₄ + O₂ → C + 2 H₂O</span>
+            <input type="checkbox" name="q4_B" value="B">
+            <span>Le méthane CH₄ (agriculture industrielle)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q4_C">
-            <input type="radio" name="q4" value="C">
-            <span>2 CH₄ + 3 O₂ → 2 CO + 4 H₂O</span>
+            <input type="checkbox" name="q4_C" value="C">
+            <span>Le protoxyde d'azote N₂O (agriculture industrielle)</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q4_D">
+            <input type="checkbox" name="q4_D" value="D">
+            <span>L'argon et le hélium</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q4-exp"></div>
     </div>
-
-    <!-- Question 5 -->
+    <!-- Question q5 -->
     <div class="question-card" id="q5-box">
-      <div class="question-title">5. Quel test permet de déceler la présence d'eau (H₂O) formée lors d'une réaction ?</div>
+      <div class="question-title">5. Quels sont les risques liés à l'usage détourné du protoxyde d'azote (N₂O) comme 'gaz hilarant' ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q5_A">
             <input type="radio" name="q5" value="A">
-            <span>L'eau de chaux qui se trouble</span>
+            <span>Aucun risque car c'est un gaz alimentaire inoffensif</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q5_B">
             <input type="radio" name="q5" value="B">
-            <span>Le sulfate de cuivre anhydre (poudre blanche qui devient bleue)</span>
+            <span>Une simple irritation passagère des yeux</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q5_C">
             <input type="radio" name="q5" value="C">
-            <span>Le nitrate d'argent qui donne un précipité blanc</span>
+            <span>Des séquelles neurologiques graves et irréversibles (destruction de la vitamine B12) voire le décès</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q5-exp"></div>
     </div>
-
-    <!-- Question 6 -->
+    <!-- Question q6 -->
     <div class="question-card" id="q6-box">
-      <div class="question-title">6. Quel test permet de caractériser le dioxyde de carbone (CO₂) ?</div>
+      <div class="question-title">6. Qu'est-ce qu'une réaction chimique de combustion ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q6_A">
             <input type="radio" name="q6" value="A">
-            <span>Le test au sulfate de cuivre anhydre</span>
+            <span>Une réaction lente et endothermique entre deux solides</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q6_B">
             <input type="radio" name="q6" value="B">
-            <span>Le test à l'eau de chaux (qui se trouble en formant un solide blanc)</span>
+            <span>Une réaction vive et exothermique entre un combustible et un comburant</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q6_C">
             <input type="radio" name="q6" value="C">
-            <span>Le test de la bûchette incandescente</span>
+            <span>Un simple changement d'état physique</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q6-exp"></div>
     </div>
-
-    <!-- Question 7 -->
+    <!-- Question q7 -->
     <div class="question-card" id="q7-box">
-      <div class="question-title">7. Quels sont les 3 éléments indispensables du 'triangle du feu' pour déclencher et entretenir une combustion ? (Plusieurs réponses possibles)</div>
+      <div class="question-title">7. Quelle est l'équation bilan correctement équilibrée de la combustion complète du méthane (CH₄) ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q7_A">
-            <input type="checkbox" name="q7_A" value="A">
-            <span>Le combustible (ex: méthane, carbone)</span>
+            <input type="radio" name="q7" value="A">
+            <span>CH₄ + 2 O₂ → CO₂ + 2 H₂O</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q7_B">
-            <input type="checkbox" name="q7_B" value="B">
-            <span>Le comburant (le dioxygène O₂)</span>
+            <input type="radio" name="q7" value="B">
+            <span>CH₄ + O₂ → CO₂ + H₂O</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q7_C">
-            <input type="checkbox" name="q7_C" value="C">
-            <span>L'énergie d'activation (chaleur, étincelle)</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q7_D">
-            <input type="checkbox" name="q7_D" value="D">
-            <span>L'eau liquide</span>
+            <input type="radio" name="q7" value="C">
+            <span>2 CH₄ + O₂ → 2 C + 4 H₂O</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q7-exp"></div>
     </div>
-
-    <!-- Question 8 -->
+    <!-- Question q8 -->
     <div class="question-card" id="q8-box">
-      <div class="question-title">8. Lors d'une combustion incomplète du méthane (CH₄ + O₂ → C + 2 H₂O), quelle substance solide colore la flamme en jaune et se dépose sous forme de suie ?</div>
+      <div class="question-title">8. Quelles conditions conduisent à une combustion incomplète du méthane ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q8_A">
-            <input type="radio" name="q8" value="A">
-            <span>Le carbone (C)</span>
+            <input type="checkbox" name="q8_A" value="A">
+            <span>Un apport insuffisant en dioxygène O₂</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q8_B">
-            <input type="radio" name="q8" value="B">
-            <span>Le cuivre (Cu)</span>
+            <input type="checkbox" name="q8_B" value="B">
+            <span>Un excès massif de dioxygène O₂</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q8_C">
-            <input type="radio" name="q8" value="C">
-            <span>Le fer (Fe)</span>
+            <input type="checkbox" name="q8_C" value="C">
+            <span>La formation de carbone solide C (flamme jaune) ou de monoxyde de carbone CO</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q8_D">
+            <input type="checkbox" name="q8_D" value="D">
+            <span>La production exclusive d'eau pure</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q8-exp"></div>
     </div>
-
-    <!-- Question 9 -->
+    <!-- Question q9 -->
     <div class="question-card" id="q9-box">
-      <div class="question-title">9. Qu'est-ce qu'un cation ?</div>
+      <div class="question-title">9. Pourquoi le monoxyde de carbone (CO) formé lors d'une combustion incomplète est-il particulièrement dangereux ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q9_A">
             <input type="radio" name="q9" value="A">
-            <span>Un atome ou groupe d'atomes ayant gagné des électrons (chargé négativement)</span>
+            <span>Car il attaque les yeux en provoquant des brûlures</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q9_B">
             <input type="radio" name="q9" value="B">
-            <span>Un atome ou groupe d'atomes ayant perdu un ou plusieurs électrons (chargé positivement)</span>
+            <span>Car il est incolore, inodore, très toxique et mortel à faible dose</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q9_C">
             <input type="radio" name="q9" value="C">
-            <span>Un atome ayant perdu des protons du noyau</span>
+            <span>Car il prend une couleur rouge visible de loin</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q9-exp"></div>
     </div>
-
-    <!-- Question 10 -->
+    <!-- Question q10 -->
     <div class="question-card" id="q10-box">
-      <div class="question-title">10. Qu'est-ce qu'un anion ?</div>
+      <div class="question-title">10. Lors de la réaction entre l'hydrogénocarbonate de sodium (NaHCO₃) et l'acide (H⁺), quelle est l'équation bilan simplifiée (sans l'ion spectateur Cl⁻) ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q10_A">
             <input type="radio" name="q10" value="A">
-            <span>Un atome ou groupe d'atomes ayant gagné un ou plusieurs électrons (chargé négativement)</span>
+            <span>NaHCO₃ + H⁺ → Na⁺ + CO₂ + H₂O</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q10_B">
             <input type="radio" name="q10" value="B">
-            <span>Un atome ayant perdu des électrons (chargé positivement)</span>
+            <span>NaHCO₃ + H⁺ → Na⁺ + H₂</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q10_C">
             <input type="radio" name="q10" value="C">
-            <span>Une molécule neutre</span>
+            <span>NaHCO₃ + 2 H⁺ → Na²⁺ + CO</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q10-exp"></div>
     </div>
-
-    <!-- Question 11 -->
+    <!-- Question q11 -->
     <div class="question-card" id="q11-box">
-      <div class="question-title">11. L'ion calcium de formule Ca²⁺ est formé à partir de l'atome de calcium. Comment s'est-il formé ?</div>
+      <div class="question-title">11. Qu'est-ce qu'un ion en chimie ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q11_A">
             <input type="radio" name="q11" value="A">
-            <span>L'atome de calcium a gagné 2 électrons</span>
+            <span>Un atome neutre sans charge électrique</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q11_B">
             <input type="radio" name="q11" value="B">
-            <span>L'atome de calcium a perdu 2 électrons</span>
+            <span>Un atome ou un groupe d'atomes qui a perdu ou gagné un ou plusieurs électrons</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q11_C">
             <input type="radio" name="q11" value="C">
-            <span>L'atome de calcium a gagné 2 protons</span>
+            <span>Une molécule d'eau décomposée</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q11-exp"></div>
     </div>
-
-    <!-- Question 12 -->
+    <!-- Question q12 -->
     <div class="question-card" id="q12-box">
-      <div class="question-title">12. De quoi est constitué l'ion hydrogénocarbonate de formule HCO₃⁻ ?</div>
+      <div class="question-title">12. Comment distingue-t-on un cation d'un anion ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q12_A">
             <input type="radio" name="q12" value="A">
-            <span>1 atome d'hydrogène, 1 atome de carbone, 3 atomes d'oxygène et 1 électron supplémentaire</span>
+            <span>Un cation est positif (perte d'e⁻) et un anion est négatif (gain d'e⁻)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q12_B">
             <input type="radio" name="q12" value="B">
-            <span>1 atome d'hydrogène, 1 atome de carbone, 3 atomes d'oxygène et 1 électron en moins</span>
+            <span>Un cation est négatif et un anion est neutre</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q12_C">
             <input type="radio" name="q12" value="C">
-            <span>3 atomes de carbone et 1 atome d'hydrogène</span>
+            <span>Un cation est un solide et un anion est un gaz</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q12-exp"></div>
     </div>
-
-    <!-- Question 13 -->
+    <!-- Question q13 -->
     <div class="question-card" id="q13-box">
-      <div class="question-title">13. Quelle est la formule du solide ionique neutre composé d'ions fer III (Fe³⁺) et d'ions chlorure (Cl⁻) ?</div>
+      <div class="question-title">13. L'ion calcium est noté Ca²⁺ et l'ion hydrogénocarbonate est noté HCO₃⁻. Quels sont leurs nombres d'électrons gagnés ou perdus ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q13_A">
             <input type="radio" name="q13" value="A">
-            <span>FeCl₂ (avec 2 ions Cl⁻ pour 1 ion Fe²⁺)</span>
+            <span>Ca²⁺ a gagné 2 électrons et HCO₃⁻ a perdu 1 électron</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q13_B">
             <input type="radio" name="q13" value="B">
-            <span>FeCl₃ (avec 3 ions Cl⁻ pour 1 ion Fe³⁺)</span>
+            <span>Ca²⁺ a perdu 2 électrons et HCO₃⁻ a gagné 1 électron</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q13_C">
             <input type="radio" name="q13" value="C">
-            <span>FeSO₄</span>
+            <span>Les deux ont gagné 2 électrons</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q13-exp"></div>
     </div>
-
-    <!-- Question 14 -->
+    <!-- Question q14 -->
     <div class="question-card" id="q14-box">
-      <div class="question-title">14. Quel réactif chimique permet d'identifier la présence d'ions chlorure (Cl⁻) dans une solution ?</div>
+      <div class="question-title">14. Comment caractérise-t-on expérimentalement la présence de certains ions dissous en solution aqueuse ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q14_A">
             <input type="radio" name="q14" value="A">
-            <span>L'hydroxyde de sodium (soude)</span>
+            <span>Par une réaction de précipitation formant un solide coloré ou blanc qui trouble la solution</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q14_B">
             <input type="radio" name="q14" value="B">
-            <span>Le nitrate d'argent</span>
+            <span>Par l'ébullition immédiate du liquide</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q14_C">
             <input type="radio" name="q14" value="C">
-            <span>L'eau de chaux</span>
+            <span>Par le changement de couleur du verre du bécher</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q14-exp"></div>
     </div>
-
-    <!-- Question 15 -->
+    <!-- Question q15 -->
     <div class="question-card" id="q15-box">
-      <div class="question-title">15. Quel est le résultat visuel du test de caractérisation des ions chlorure (Cl⁻) au nitrate d'argent ?</div>
+      <div class="question-title">15. Quelle est la formule d'un solide ionique formé d'ions Fer III (Fe³⁺) et d'ions chlorure (Cl⁻) pour respecter l'électroneutralité ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q15_A">
             <input type="radio" name="q15" value="A">
-            <span>Un précipité bleu</span>
+            <span>FeCl</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q15_B">
             <input type="radio" name="q15" value="B">
-            <span>Un précipité blanc qui noircit à la lumière</span>
+            <span>FeCl₃ (1 ion Fe³⁺ pour 3 ions Cl⁻)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q15_C">
             <input type="radio" name="q15" value="C">
-            <span>Un précipité vert</span>
+            <span>Fe₃Cl</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q15-exp"></div>
     </div>
-
-    <!-- Question 16 -->
+    <!-- Question q16 -->
     <div class="question-card" id="q16-box">
-      <div class="question-title">16. Quels ions métalliques réagissent avec la soude (hydroxyde de sodium) pour former des précipités de couleur spécifique ? (Plusieurs réponses possibles)</div>
+      <div class="question-title">16. Quel solide ionique forme une maille cristalline cubique à faces centrées composée d'ions Na⁺ et Cl⁻ ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q16_A">
-            <input type="checkbox" name="q16_A" value="A">
-            <span>Les ions Cuivre II (Cu²⁺) → précipité bleu d'hydroxyde de cuivre II</span>
+            <input type="radio" name="q16" value="A">
+            <span>Le chlorure de sodium (sel de cuisine NaCl)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q16_B">
-            <input type="checkbox" name="q16_B" value="B">
-            <span>Les ions Fer II (Fe²⁺) → précipité vert d'hydroxyde de fer II</span>
+            <input type="radio" name="q16" value="B">
+            <span>Le carbonate de calcium</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q16_C">
-            <input type="checkbox" name="q16_C" value="C">
-            <span>Les ions Fer III (Fe³⁺) → précipité rouille d'hydroxyde de fer III</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q16_D">
-            <input type="checkbox" name="q16_D" value="D">
-            <span>Les ions sodium (Na⁺) → précipité violet</span>
+            <input type="radio" name="q16" value="C">
+            <span>Le sulfate de cuivre</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q16-exp"></div>
     </div>
-
-    <!-- Question 17 -->
+    <!-- Question q17 -->
     <div class="question-card" id="q17-box">
-      <div class="question-title">17. Quelle est la couleur du précipité d'hydroxyde de cuivre II Cu(OH)₂ obtenu lors du test à la soude sur des ions Cu²⁺ ?</div>
+      <div class="question-title">17. Quels ions sont respectivement responsables de l'acidité et de la basicité d'une solution aqueuse ? (Plusieurs réponses possibles)</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q17_A">
-            <input type="radio" name="q17" value="A">
-            <span>Vert</span>
+            <input type="checkbox" name="q17_A" value="A">
+            <span>Les ions hydrogène H⁺ (ou hydronium H₃O⁺) sont responsables de l'acidité (baisse du pH)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q17_B">
-            <input type="radio" name="q17" value="B">
-            <span>Bleu</span>
+            <input type="checkbox" name="q17_B" value="B">
+            <span>Les ions hydroxyde OH⁻ (ou HO⁻) sont responsables de la basicité (hausse du pH)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q17_C">
-            <input type="radio" name="q17" value="C">
-            <span>Rouille / Brun</span>
+            <input type="checkbox" name="q17_C" value="C">
+            <span>Les ions chlorure Cl⁻ rendent la solution acide</span>
+          </label>
+        </li>
+        <li class="option-item">
+          <label class="option-label" id="lbl_q17_D">
+            <input type="checkbox" name="q17_D" value="D">
+            <span>Les ions sodium Na⁺ rendent la solution basique</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q17-exp"></div>
     </div>
-
-    <!-- Question 18 -->
+    <!-- Question q18 -->
     <div class="question-card" id="q18-box">
-      <div class="question-title">18. Quelle couleur de précipité indique la présence d'ions Fer II (Fe²⁺) lorsqu'on ajoute de la soude ?</div>
+      <div class="question-title">18. Quelle est la réaction bilan fondamentale de neutralisation entre un acide (H⁺ + Cl⁻) et une base (Na⁺ + OH⁻) ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q18_A">
             <input type="radio" name="q18" value="A">
-            <span>Vert</span>
+            <span>H⁺ + OH⁻ → H₂O (les ions Na⁺ et Cl⁻ étant spectateurs)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q18_B">
             <input type="radio" name="q18" value="B">
-            <span>Bleu</span>
+            <span>Na⁺ + H⁺ → NaH</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q18_C">
             <input type="radio" name="q18" value="C">
-            <span>Rouille</span>
+            <span>Cl⁻ + OH⁻ → ClO⁻ + H₂</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q18-exp"></div>
     </div>
-
-    <!-- Question 19 -->
+    <!-- Question q19 -->
     <div class="question-card" id="q19-box">
-      <div class="question-title">19. Quelle couleur de précipité indique la présence d'ions Fer III (Fe³⁺) lors du test à la soude ?</div>
+      <div class="question-title">19. Comment l'augmentation du dioxyde de carbone (CO₂) atmosphérique provoque-t-elle l'acidification des océans ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q19_A">
             <input type="radio" name="q19" value="A">
-            <span>Blanc</span>
+            <span>Le CO₂ chauffe l'eau ce qui fabrique des ions sodium</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q19_B">
             <input type="radio" name="q19" value="B">
-            <span>Rouille (brun-orange)</span>
+            <span>Le CO₂ se dissout dans l'eau de mer et forme de l'acide carbonique (H₂CO₃) qui libère des ions H⁺</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q19_C">
             <input type="radio" name="q19" value="C">
-            <span>Vert</span>
+            <span>Le CO₂ consomme tout le sel des océans</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q19-exp"></div>
     </div>
-
-    <!-- Question 20 -->
+    <!-- Question q20 -->
     <div class="question-card" id="q20-box">
-      <div class="question-title">20. Quels sont les seuls ions responsables de l'ACIDITÉ d'une solution aqueuse (et de la baisse du pH) ?</div>
+      <div class="question-title">20. Quelles sont les conséquences écologiques majeures de l'acidification des océans ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q20_A">
             <input type="radio" name="q20" value="A">
-            <span>Les ions hydrogène H⁺ (ou hydronium H₃O⁺)</span>
+            <span>L'eau de mer devient potable</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q20_B">
             <input type="radio" name="q20" value="B">
-            <span>Les ions hydroxyde HO⁻ (ou OH⁻)</span>
+            <span>Les poissons deviennent fluorescents</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q20_C">
             <input type="radio" name="q20" value="C">
-            <span>Les ions chlorure Cl⁻</span>
+            <span>La baisse du pH empêche la formation normale des coquilles et squelettes en carbonate de calcium (CaCO₃) des organismes marins</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q20-exp"></div>
     </div>
-
-    <!-- Question 21 -->
+    <!-- Question q21 -->
     <div class="question-card" id="q21-box">
-      <div class="question-title">21. Quels sont les seuls ions responsables de la BASICITÉ d'une solution aqueuse (et de la hausse du pH) ?</div>
+      <div class="question-title">21. Combien y a-t-il de fois plus d'ions H⁺ dans un jus de citron de pH = 2 que dans un soda de pH = 3 ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q21_A">
             <input type="radio" name="q21" value="A">
-            <span>Les ions hydrogène H⁺</span>
+            <span>2 fois plus</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q21_B">
             <input type="radio" name="q21" value="B">
-            <span>Les ions hydroxyde HO⁻ (ou OH⁻)</span>
+            <span>10 fois plus (l'échelle de pH étant logarithmique)</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q21_C">
             <input type="radio" name="q21" value="C">
-            <span>Les ions sodium Na⁺</span>
+            <span>100 fois plus</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q21-exp"></div>
     </div>
-
-    <!-- Question 22 -->
+    <!-- Question q22 -->
     <div class="question-card" id="q22-box">
-      <div class="question-title">22. Quelle est l'équation bilan simplifiée de la réaction de neutralisation entre un acide et une base ?</div>
+      <div class="question-title">22. Quelle est la différence fondamentale entre la formule du dioxyde d'azote (NO₂) et celle du protoxyde d'azote (N₂O) ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q22_A">
             <input type="radio" name="q22" value="A">
-            <span>H⁺ + HO⁻ → H₂O</span>
+            <span>NO₂ contient 1 atome d'azote et 2 oxygènes ; N₂O contient 2 atomes d'azote et 1 oxygène</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q22_B">
             <input type="radio" name="q22" value="B">
-            <span>H⁺ + Cl⁻ → HCl</span>
+            <span>NO₂ est solide et N₂O est liquide</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q22_C">
             <input type="radio" name="q22" value="C">
-            <span>Na⁺ + HO⁻ → NaOH</span>
+            <span>Ce sont deux écritures d'un même gaz</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q22-exp"></div>
     </div>
-
-    <!-- Question 23 -->
+    <!-- Question q23 -->
     <div class="question-card" id="q23-box">
-      <div class="question-title">23. Lors de la réaction entre l'acide chlorhydrique (H⁺ + Cl⁻) et la soude (Na⁺ + HO⁻), quels ions sont des 'ions spectateurs' (qui ne réagissent pas) ? (Plusieurs réponses possibles)</div>
+      <div class="question-title">23. Pourquoi la masse se conserve-t-elle rigoureusement lors d'une réaction chimique en milieu fermé ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q23_A">
-            <input type="checkbox" name="q23_A" value="A">
-            <span>L'ion sodium Na⁺</span>
+            <input type="radio" name="q23" value="A">
+            <span>Parce que de nouveaux atomes plus lourds apparaissent</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q23_B">
-            <input type="checkbox" name="q23_B" value="B">
-            <span>L'ion chlorure Cl⁻</span>
+            <input type="radio" name="q23" value="B">
+            <span>Parce qu'aucun atome n'est créé ni détruit : les atomes des réactifs se réarrangent pour former les produits</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q23_C">
-            <input type="checkbox" name="q23_C" value="C">
-            <span>L'ion hydrogène H⁺</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q23_D">
-            <input type="checkbox" name="q23_D" value="D">
-            <span>L'ion hydroxyde HO⁻</span>
+            <input type="radio" name="q23" value="C">
+            <span>Parce que la température reste nulle</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q23-exp"></div>
     </div>
-
-    <!-- Question 24 -->
+    <!-- Question q24 -->
     <div class="question-card" id="q24-box">
-      <div class="question-title">24. Quelle est la valeur du pH pour une solution parfaitement neutre à 25 °C ?</div>
+      <div class="question-title">24. Lorsqu'on équilibre l'équation de la combustion incomplète 2 CH₄ + 3 O₂ → 2 CO + 4 H₂O, pourquoi multiplie-t-on tout par 2 ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q24_A">
             <input type="radio" name="q24" value="A">
-            <span>pH = 0</span>
+            <span>Pour éviter les nombres décimaux (comme 1,5 O₂) et obtenir des coefficients entiers</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q24_B">
             <input type="radio" name="q24" value="B">
-            <span>pH = 7</span>
+            <span>Parce qu'il y a 2 réactifs</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q24_C">
             <input type="radio" name="q24" value="C">
-            <span>pH = 14</span>
+            <span>Pour doubler la vitesse de réaction</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q24-exp"></div>
     </div>
-
-    <!-- Question 25 -->
+    <!-- Question q25 -->
     <div class="question-card" id="q25-box">
-      <div class="question-title">25. Que se passe-t-il pour le pH d'une solution acide lorsqu'on la dilue en y ajoutant de l'eau ?</div>
+      <div class="question-title">25. Quelle est la couleur prise par le bleu de bromothymol (BBT) en présence d'ammoniaque (solution basique d'hydroxyde d'ammonium) ?</div>
       <ul class="options-list">
         <li class="option-item">
           <label class="option-label" id="lbl_q25_A">
             <input type="radio" name="q25" value="A">
-            <span>Le pH diminue et devient de plus en plus acide</span>
+            <span>Jaune</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q25_B">
             <input type="radio" name="q25" value="B">
-            <span>Le pH augmente et se rapproche de 7 (sans jamais le dépasser)</span>
+            <span>Vert</span>
           </label>
         </li>
         <li class="option-item">
           <label class="option-label" id="lbl_q25_C">
             <input type="radio" name="q25" value="C">
-            <span>Le pH ne varie pas</span>
+            <span>Bleu</span>
           </label>
         </li>
       </ul>
       <div class="explanation" id="q25-exp"></div>
     </div>
-
-    <!-- Question 26 -->
-    <div class="question-card" id="q26-box">
-      <div class="question-title">26. Quelle est la règle de sécurité impérative à respecter pour diluer un acide concentré ?</div>
-      <ul class="options-list">
-        <li class="option-item">
-          <label class="option-label" id="lbl_q26_A">
-            <input type="radio" name="q26" value="A">
-            <span>Verser l'eau dans l'acide concentré</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q26_B">
-            <input type="radio" name="q26" value="B">
-            <span>Verser l'acide concentré dans l'eau</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q26_C">
-            <input type="radio" name="q26" value="C">
-            <span>Mélanger sans protection</span>
-          </label>
-        </li>
-      </ul>
-      <div class="explanation" id="q26-exp"></div>
-    </div>
-
-    <!-- Question 27 -->
-    <div class="question-card" id="q27-box">
-      <div class="question-title">27. Concernant l'acidification des océans due aux émissions de CO₂, quelles affirmations sont vraies selon le cours ? (Plusieurs réponses possibles)</div>
-      <ul class="options-list">
-        <li class="option-item">
-          <label class="option-label" id="lbl_q27_A">
-            <input type="checkbox" name="q27_A" value="A">
-            <span>Le CO₂ dissous dans l'océan produit de l'acide carbonique (H₂CO₃) puis des ions H⁺</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q27_B">
-            <input type="checkbox" name="q27_B" value="B">
-            <span>L'augmentation des ions H⁺ fait baisser le pH de l'eau de mer</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q27_C">
-            <input type="checkbox" name="q27_C" value="C">
-            <span>Une eau de mer moins basique gêne la formation des coquilles en carbonate de calcium (CaCO₃)</span>
-          </label>
-        </li>
-        <li class="option-item">
-          <label class="option-label" id="lbl_q27_D">
-            <input type="checkbox" name="q27_D" value="D">
-            <span>L'océan rejette du dioxygène liquide</span>
-          </label>
-        </li>
-      </ul>
-      <div class="explanation" id="q27-exp"></div>
-    </div>
-
-    <button type="button" class="btn-submit" onclick="submitQuiz()">Valider mes 27 réponses</button>
+    <button type="button" class="btn-submit" onclick="submitQuiz()">Valider mes 25 réponses</button>
   </form>
-
   <div class="result-box" id="resultBox"></div>
 </div>
-
 <script>
-  const answers = {
-    "q1": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : L'air est constitué principalement de 78 % de diazote (N₂) et 21 % de dioxygène (O₂)."
-    },
-    "q2": {
-      "type": "multiple",
-      "correct": ["A", "B", "C"],
-      "exp": "Explication : Le CO₂, le CH₄ et le N₂O (protoxyde d'azote) sont des gaz à effet de serre mis en avant dans le cours."
-    },
-    "q3": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : Le monoxyde de carbone CO est un gaz extrêmement toxique, inodore et incolore qui bloque l'oxygénation du sang."
-    },
-    "q4": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : Lors de la combustion complète, le méthane et le dioxygène réagissent pour former du dioxyde de carbone (CO₂) et de l'eau (H₂O)."
-    },
-    "q5": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Le sulfate de cuivre anhydre est une poudre blanche qui prend une couleur bleue caractéristique au contact de l'eau."
-    },
-    "q6": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Le dioxyde de carbone CO₂ réagit avec l'eau de chaux limpide et la rend trouble."
-    },
-    "q7": {
-      "type": "multiple",
-      "correct": ["A", "B", "C"],
-      "exp": "Explication : Le triangle du feu réunit le combustible, le comburant (O₂) et la source d'énergie (chaleur/étincelle)."
-    },
-    "q8": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : Les particules de carbone solide non brûlé incandescents colorent la flamme en jaune et forment un dépôt noir de suie."
-    },
-    "q9": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Un cation est un ion positif formé par la perte d'un ou plusieurs électrons (ex: Ca²⁺, Na⁺)."
-    },
-    "q10": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : Un anion est un ion négatif formé lorsqu'un atome ou groupe d'atomes gagne un ou plusieurs électrons (ex: Cl⁻, HCO₃⁻)."
-    },
-    "q11": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Ca²⁺ indique que l'atome de calcium a perdu 2 électrons (qui sont négatifs), conservant ainsi un excès de 2 charges positives."
-    },
-    "q12": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : L'ion HCO₃⁻ rassemble 1 H, 1 C, 3 O et porte une charge négative supplémentaire (1 électron de plus)."
-    },
-    "q13": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Pour assurer la neutralité électrique avec un ion Fe³⁺ (+3), il faut 3 ions chlorure Cl⁻ (-1 d'où 3 x -1 = -3)."
-    },
-    "q14": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : La solution de nitrate d'argent (contenant des ions Ag⁺) est le réactif spécifique de l'ion chlorure Cl⁻."
-    },
-    "q15": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Le chlorure d'argent formé est un précipité blanc insoluble qui a la propriété de noircir lorsqu'il est exposé à la lumière."
-    },
-    "q16": {
-      "type": "multiple",
-      "correct": ["A", "B", "C"],
-      "exp": "Explication : La soude permet de caractériser Cu²⁺ (bleu), Fe²⁺ (vert) et Fe³⁺ (rouille). L'ion Na⁺ ne forme pas de précipité avec HO⁻ (ion spectateur)."
-    },
-    "q17": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Cu²⁺ + 2 HO⁻ → Cu(OH)₂ (précipité bleu)."
-    },
-    "q18": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : Fe²⁺ + 2 HO⁻ → Fe(OH)₂ (précipité vert)."
-    },
-    "q19": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Fe³⁺ + 3 HO⁻ → Fe(OH)₃ (précipité rouille)."
-    },
-    "q20": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : La présence d'ions H⁺ libres en solution détermine son acidité et abaisse le pH en dessous de 7."
-    },
-    "q21": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Les ions hydroxyde HO⁻ sont responsables du caractère basique d'une solution aqueuse (pH > 7)."
-    },
-    "q22": {
-      "type": "single",
-      "correct": ["A"],
-      "exp": "Explication : Lors du mélange d'un acide et d'une base, les ions H⁺ et HO⁻ se combinent pour former des molécules d'eau neutres H₂O."
-    },
-    "q23": {
-      "type": "multiple",
-      "correct": ["A", "B"],
-      "exp": "Explication : Na⁺ et Cl⁻ restent inchangés en solution avant et après réaction. Ce sont des ions spectateurs."
-    },
-    "q24": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : À pH = 7, la solution est neutre (il y a autant d'ions H⁺ que d'ions HO⁻)."
-    },
-    "q25": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : Diluer un acide réduit la concentration en ions H⁺ ; la solution devient moins acide, donc son pH augmente vers 7."
-    },
-    "q26": {
-      "type": "single",
-      "correct": ["B"],
-      "exp": "Explication : 'On ne verse jamais d'eau dans l'acide !' Pour éviter des projections d'acide chaud et corrosif, on verse toujours l'acide dans l'eau."
-    },
-    "q27": {
-      "type": "multiple",
-      "correct": ["A", "B", "C"],
-      "exp": "Explication : L'absorption du CO₂ par les océans produit des ions H⁺, ce qui abaisse le pH marin et fragilise les coquilles en carbonate de calcium."
+const answers = {
+  "q1": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : L'air atmosphérique est constitué principalement de 78 % de diazote (N₂) et 21 % de dioxygène (O₂)."
+  },
+  "q2": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : L'argon est le gaz rare le plus représenté dans le 1 % restant de l'air atmosphérique."
+  },
+  "q3": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B"
+    ],
+    "exp": "Explication : Le CO₂ permet la photosynthèse et maintient l'effet de serre naturel. Sans lui, la Terre deviendrait une planète totalement gelée."
+  },
+  "q4": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "exp": "Explication : Les moteurs diesel émettent des oxydes d'azote (NO, NO₂). L'agriculture émet du méthane (CH₄) et du protoxyde d'azote (N₂O)."
+  },
+  "q5": {
+    "type": "single",
+    "correct": "C",
+    "exp": "Explication : L'inhalation récréative de N₂O provoque de sévères atteintes du système nerveux (neuropathies) et peut s'avérer mortelle."
+  },
+  "q6": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La combustion est une réaction exothermique vive qui dégage de la chaleur en faisant réagir un combustible avec un comburant."
+  },
+  "q7": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : L'équation équilibrée comporte 1 carbone, 4 hydrogènes et 4 oxygènes de chaque côté : CH₄ + 2 O₂ → CO₂ + 2 H₂O."
+  },
+  "q8": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "C"
+    ],
+    "exp": "Explication : Lorsque le dioxygène manque, la combustion devient incomplète, produisant du carbone solide (suie jaune) et/ou du monoxyde de carbone (CO)."
+  },
+  "q9": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Le monoxyde de carbone (CO) est indétectable à l'œil et au nez, se fixe sur l'hémoglobine et provoque l'asphyxie mortelle."
+  },
+  "q10": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : NaHCO₃ réagit avec l'ion hydrogène H⁺ pour former l'ion sodium Na⁺, du dioxyde de carbone CO₂ et de l'eau H₂O."
+  },
+  "q11": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Un ion se forme lorsqu'un atome (ou groupe d'atomes) gagne des électrons (anion -) ou perd des électrons (cation +)."
+  },
+  "q12": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Les cations portent une ou plusieurs charges positives (ex: Ca²⁺, Na⁺) et les anions portent des charges négatives (ex: Cl⁻, HCO₃⁻)."
+  },
+  "q13": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La charge 2+ indique la perte de 2 électrons. La charge - indique le gain d'1 électron."
+  },
+  "q14": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : L'ajout d'un réactif spécifique entraîne la précipitation d'un solide ionique insoluble caractérisant l'ion présent."
+  },
+  "q15": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Pour neutraliser les 3 charges positives de Fe³⁺, il faut 3 ions chlorure Cl⁻, ce qui donne la formule globale FeCl₃."
+  },
+  "q16": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Le cristal de chlorure de sodium (NaCl) est structuré sous forme d'un réseau cubique alternant ions Na⁺ et Cl⁻."
+  },
+  "q17": {
+    "type": "multiple",
+    "correct": [
+      "A",
+      "B"
+    ],
+    "exp": "Explication : L'acidité est liée à la présence d'ions H⁺ (H₃O⁺). La basicité est liée aux ions OH⁻ (HO⁻)."
+  },
+  "q18": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : Les ions hydrogène et hydroxyde se neutralisent pour former de l'eau neutre H₂O. Les ions Na⁺ et Cl⁻ ne réagissent pas."
+  },
+  "q19": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : En se dissolvant, le CO₂ produit H₂CO₃ qui se dissocie en libérant des ions H⁺, faisant ainsi baisser le pH de l'océan."
+  },
+  "q20": {
+    "type": "single",
+    "correct": "C",
+    "exp": "Explication : Une eau de mer moins basique s'attaque aux organismes à coquille calcaires (mollusques, coraux) et perturbe les écosystèmes marins."
+  },
+  "q21": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : Une baisse d'une unité de pH correspond à une concentration en ions H⁺ multipliée par 10."
+  },
+  "q22": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : La disposition des atomes varie : NO₂ (dioxyde d'azote) est un polluant brun irritant, N₂O (protoxyde d'azote) est un comburant."
+  },
+  "q23": {
+    "type": "single",
+    "correct": "B",
+    "exp": "Explication : La règle de conservation de la matière implique que tous les atomes initiaux se retrouvent dans les produits de réaction."
+  },
+  "q24": {
+    "type": "single",
+    "correct": "A",
+    "exp": "Explication : On privilégie les coefficients stœchiométriques entiers dans les équations bilans."
+  },
+  "q25": {
+    "type": "single",
+    "correct": "C",
+    "exp": "Explication : Le bleu de bromothymol (BBT) vire au bleu en milieu basique (pH > 7,6)."
+  }
+};
+// Shuffle options inside each question on page load without changing question order
+window.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('quizForm');
+  if (form) form.reset();
+  document.querySelectorAll('.options-list').forEach(ul => {
+    const items = Array.from(ul.children);
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
     }
-  };
+    items.forEach(item => ul.appendChild(item));
+  });
+});
 
-  function submitQuiz() {
-    let score = 0;
-    const total = Object.keys(answers).length;
-
-    for (let qId in answers) {
-      const qConfig = answers[qId];
-      const expDiv = document.getElementById(qId + "-exp");
-      
-      if (qConfig.type === "single") {
-        const selected = document.querySelector(`input[name="${qId}"]:checked`);
-        const labels = document.querySelectorAll(`input[name="${qId}"]`);
-
-        labels.forEach(input => {
-          input.parentElement.classList.remove('correct', 'incorrect');
-        });
-
-        if (selected) {
-          if (selected.value === qConfig.correct) {
-            score++;
-            selected.parentElement.classList.add('correct');
-          } else {
-            selected.parentElement.classList.add('incorrect');
-            labels.forEach(input => {
-              if (input.value === qConfig.correct) {
-                input.parentElement.classList.add('correct');
-              }
-            });
-          }
+function submitQuiz() {
+  let score = 0;
+  const total = Object.keys(answers).length;
+  for (let qId in answers) {
+    const qConfig = answers[qId];
+    const expDiv = document.getElementById(qId + "-exp");
+    
+    if (qConfig.type === "single") {
+      const selected = document.querySelector(`input[name="${qId}"]:checked`);
+      const labels = document.querySelectorAll(`input[name="${qId}"]`);
+      labels.forEach(input => {
+        input.parentElement.classList.remove('correct', 'incorrect');
+      });
+      if (selected) {
+        if (selected.value === qConfig.correct) {
+          score++;
+          selected.parentElement.classList.add('correct');
         } else {
+          selected.parentElement.classList.add('incorrect');
           labels.forEach(input => {
             if (input.value === qConfig.correct) {
               input.parentElement.classList.add('correct');
             }
           });
         }
-      } else if (qConfig.type === "multiple") {
-        const correctAnswers = qConfig.correct;
-        const options = ["A", "B", "C", "D"];
-        let userSelected = [];
-
-        options.forEach(optVal => {
-          const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
-          const label = document.getElementById(`lbl_${qId}_${optVal}`);
-          
-          if (label) {
-            label.classList.remove('correct', 'incorrect');
-          }
-
-          if (input && input.checked) {
-            userSelected.push(optVal);
-          }
-        });
-
-        const isExactMatch = (
-          userSelected.length === correctAnswers.length &&
-          userSelected.every(val => correctAnswers.includes(val))
-        );
-
-        if (isExactMatch) {
-          score++;
-        }
-
-        options.forEach(optVal => {
-          const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
-          const label = document.getElementById(`lbl_${qId}_${optVal}`);
-
-          if (label) {
-            const isCorrectOption = correctAnswers.includes(optVal);
-            const isChecked = input && input.checked;
-
-            if (isChecked && isCorrectOption) {
-              label.classList.add('correct');
-            } else if (isChecked && !isCorrectOption) {
-              label.classList.add('incorrect');
-            } else if (!isChecked && isCorrectOption) {
-              label.classList.add('correct');
-            }
+      } else {
+        labels.forEach(input => {
+          if (input.value === qConfig.correct) {
+            input.parentElement.classList.add('correct');
           }
         });
       }
-
-      expDiv.style.display = 'block';
-      expDiv.textContent = qConfig.exp;
+    } else if (qConfig.type === "multiple") {
+      const correctAnswers = qConfig.correct;
+      const options = ["A", "B", "C", "D"];
+      let userSelected = [];
+      options.forEach(optVal => {
+        const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+        const label = document.getElementById(`lbl_${qId}_${optVal}`);
+        if (label) {
+          label.classList.remove('correct', 'incorrect');
+        }
+        if (input && input.checked) {
+          userSelected.push(optVal);
+        }
+      });
+      const isExactMatch = (
+        userSelected.length === correctAnswers.length &&
+        userSelected.every(val => correctAnswers.includes(val))
+      );
+      if (isExactMatch) {
+        score++;
+      }
+      options.forEach(optVal => {
+        const input = document.querySelector(`input[name="${qId}_${optVal}"]`);
+        const label = document.getElementById(`lbl_${qId}_${optVal}`);
+        if (label) {
+          const isCorrectOption = correctAnswers.includes(optVal);
+          const isChecked = input && input.checked;
+          if (isChecked && isCorrectOption) {
+            label.classList.add('correct');
+          } else if (isChecked && !isCorrectOption) {
+            label.classList.add('incorrect');
+          } else if (!isChecked && isCorrectOption) {
+            label.classList.add('correct');
+          }
+        }
+      });
     }
-
-    const percentage = Math.round((score / total) * 100);
-    const resultBox = document.getElementById('resultBox');
-    resultBox.style.display = 'block';
-    resultBox.innerHTML = `Résultat final : ${score} / ${total} (${percentage} %)`;
-    resultBox.scrollIntoView({ behavior: 'smooth' });
+    expDiv.style.display = 'block';
+    expDiv.textContent = qConfig.exp;
   }
+  const percentage = Math.round((score / total) * 100);
+  const resultBox = document.getElementById('resultBox');
+  resultBox.style.display = 'block';
+  resultBox.innerHTML = `Résultat final : ${score} / ${total} (${percentage} %)`;
+  resultBox.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
-
 </body>
 </html>
